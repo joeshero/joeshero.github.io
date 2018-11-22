@@ -232,41 +232,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
   
 </nav>
 
@@ -295,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/Java并发之volatile原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/12242.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -314,7 +282,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/Java并发之volatile原理/" itemprop="url">Java并发之volatile原理</a></h1>
+                <a class="post-title-link" href="/post/12242.html" itemprop="url">Java并发之volatile原理</a></h1>
         
 
         <div class="post-meta">
@@ -369,6 +337,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.3k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8分钟
+                </span>
+              
+            </div>
           
 
           
@@ -500,7 +499,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/Java并发之synchronized原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/23224.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -519,7 +518,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/Java并发之synchronized原理/" itemprop="url">Java并发之synchronized原理</a></h1>
+                <a class="post-title-link" href="/post/23224.html" itemprop="url">Java并发之synchronized原理</a></h1>
         
 
         <div class="post-meta">
@@ -575,6 +574,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.1k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  14分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -603,16 +633,15 @@
 </ol>
 <p>当一个线程访问同步代码块时，它首先是需要得到锁才能执行同步代码，当退出或者抛出异常时必须要释放锁，那么它是如何来实现这个机制的呢？我们先看一段简单的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SynchronizedTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>)&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>利用javap工具查看生成的class文件信息来分析Synchronize的实现 会发现，synchronized是利用JVM的监视器锁，在需要同步的代码块前后加上monitorenter和moniterexit指令实现的。</strong></p>
-<p><strong>对于同步方法的实现是依靠方法修饰符上的ACC_SYNCHRONIZED实现的。</strong></p>
+<p><strong>利用javap工具查看生成的class文件信息来分析Synchronize的实现 会发现，synchronized是利用JVM的监视器锁，在需要同步的代码块前后加上monitorenter和moniterexit指令实现的。</strong><br><img src="/post/23224/1.jpg" title="class文件"><br><strong>对于同步方法的实现是依靠方法修饰符上的ACC_SYNCHRONIZED实现的。</strong></p>
 <h2 id="2-2-同步代码块"><a href="#2-2-同步代码块" class="headerlink" title="2.2 同步代码块"></a>2.2 同步代码块</h2><p>monitorenter指令插入到同步代码块的开始位置，monitorexit指令插入到同步代码块的结束位置，JVM需要保证每一个monitorenter都有一个monitorexit与之相对应。任何对象都有一个monitor与之相关联，当且一个monitor被持有之后，他将处于锁定状态。线程执行到monitorenter指令时，将会尝试获取对象所对应的monitor所有权，即尝试获取对象的锁；</p>
 <h2 id="2-3-同步方法"><a href="#2-3-同步方法" class="headerlink" title="2.3 同步方法"></a>2.3 同步方法</h2><p>synchronized方法则会被翻译成普通的方法调用和返回指令如:invokevirtual、areturn指令，在VM字节码层面并没有任何特别的指令来实现被synchronized修饰的方法，而是在Class文件的方法表中将该方法的access_flags字段中的synchronized标志位置1，表示该方法是同步方法并使用调用该方法的对象或该方法所属的Class在JVM的内部对象表示Klass做为锁对象。</p>
 <h2 id="2-4-对象头"><a href="#2-4-对象头" class="headerlink" title="2.4 对象头"></a>2.4 对象头</h2><p>synchronized用的锁是存在Java对象头里的，那么什么是Java对象头呢？Hotspot虚拟机的对象头主要包括两部分数据：Mark Word（标记字段）、Klass Pointer（类型指针）。其中Klass Point是是对象指向它的类元数据的指针，虚拟机通过这个指针来确定这个对象是哪个类的实例，Mark Word用于存储对象自身的运行时数据，它是实现轻量级锁和偏向锁的关键，所以下面将重点阐述Mark Word。</p>
 <p>Mark Word用于存储对象自身的<strong>运行时数据，如哈希码（HashCode）、GC分代年龄、锁状态标志、线程持有的锁、偏向线程 ID、偏向时间戳</strong>等等。Java对象头一般占有两个机器码（在32位虚拟机中，1个机器码等于4字节，也就是32bit），但是如果对象是数组类型，则需要三个机器码，因为JVM虚拟机可以通过Java对象的元数据信息确定Java对象的大小，但是无法从数组的元数据来确认数组的大小，所以用一块来记录数组长度。下图是Java对象头的存储结构（32位虚拟机）：</p>
-<p><img src="https://img-blog.csdn.net/20151217151455512?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="Java对象头"></p>
+<img src="/post/23224/3.jpg" title="Java对象头">
 <h2 id="2-5-Monitor"><a href="#2-5-Monitor" class="headerlink" title="2.5 Monitor"></a>2.5 Monitor</h2><p>什么是Monitor？我们可以把它理解为一个同步工具，也可以描述为一种同步机制，它通常被描述为一个对象。</p>
 <p>与一切皆对象一样，所有的Java对象是天生的Monitor，每一个Java对象都有成为Monitor的潜质，因为在Java的设计中 ，每一个Java对象自打娘胎里出来就带了一把看不见的锁，它叫做内部锁或者Monitor锁。</p>
-<p>Monitor 是线程私有的数据结构，每一个线程都有一个可用monitor record列表，同时还有一个全局的可用列表。每一个被锁住的对象都会和一个monitor关联（对象头的MarkWord中的LockWord指向monitor的起始地址），同时monitor中有一个Owner字段存放拥有该锁的线程的唯一标识，表示该锁被这个线程占用。其结构如下： </p>
+<p>Monitor 是线程私有的数据结构，每一个线程都有一个可用monitor record列表，同时还有一个全局的可用列表。每一个被锁住的对象都会和一个monitor关联（对象头的MarkWord中的LockWord指向monitor的起始地址），同时monitor中有一个Owner字段存放拥有该锁的线程的唯一标识，表示该锁被这个线程占用。其结构如下：</p>
 <table>
 <thead>
 <tr>
@@ -651,39 +680,39 @@
 <h2 id="3-5-轻量级锁"><a href="#3-5-轻量级锁" class="headerlink" title="3.5 轻量级锁"></a>3.5 轻量级锁</h2><p>引入轻量级锁的主要目的是在多没有多线程竞争的前提下，减少传统的重量级锁使用操作系统互斥量产生的性能消耗。当关闭偏向锁功能或者多个线程竞争偏向锁导致偏向锁升级为轻量级锁，则会尝试获取轻量级锁，其步骤如下：</p>
 <p><strong>获取锁</strong></p>
 <ol>
-<li><p>判断当前对象是否处于无锁状态（hashcode、0、01），若是，则JVM首先将在当前线程的栈帧中建立一个名为锁记录（Lock  Record）的空间，用于存储锁对象目前的Mark Word的拷贝（官方把这份拷贝加了一个Displaced前缀，即Displaced Mark  Word）；否则执行步骤（3）； </p>
+<li><p>判断当前对象是否处于无锁状态（hashcode、0、01），若是，则JVM首先将在当前线程的栈帧中建立一个名为锁记录（Lock  Record）的空间，用于存储锁对象目前的Mark Word的拷贝（官方把这份拷贝加了一个Displaced前缀，即Displaced Mark  Word）；否则执行步骤（3）；</p>
 </li>
-<li><p>JVM利用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指正，如果成功表示竞争到锁，则将锁标志位变成00（表示此对象处于轻量级锁状态），执行同步操作；如果失败则执行步骤（3）； </p>
+<li><p>JVM利用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指正，如果成功表示竞争到锁，则将锁标志位变成00（表示此对象处于轻量级锁状态），执行同步操作；如果失败则执行步骤（3）；</p>
 </li>
-<li><p>判断当前对象的Mark Word是否指向当前线程的栈帧，如果是则表示当前线程已经持有当前对象的锁，则直接执行同步代码块；否则只能说明该锁对象已经被其他线程抢占了，这时轻量级锁需要膨胀为重量级锁，锁标志位变成10，后面等待的线程将会进入阻塞状态； </p>
+<li><p>判断当前对象的Mark Word是否指向当前线程的栈帧，如果是则表示当前线程已经持有当前对象的锁，则直接执行同步代码块；否则只能说明该锁对象已经被其他线程抢占了，这时轻量级锁需要膨胀为重量级锁，锁标志位变成10，后面等待的线程将会进入阻塞状态；</p>
 </li>
 </ol>
 <p><strong>释放锁</strong><br>轻量级锁的释放也是通过CAS操作来进行的，主要步骤如下：</p>
 <ol>
-<li>取出在获取轻量级锁保存在Displaced Mark Word中的数据； </li>
-<li>用CAS操作将取出的数据替换当前对象的Mark Word中，如果成功，则说明释放锁成功，否则执行（3）； </li>
-<li>如果CAS操作替换失败，说明有其他线程尝试获取该锁，则需要在释放锁的同时需要唤醒被挂起的线程。 </li>
+<li>取出在获取轻量级锁保存在Displaced Mark Word中的数据；</li>
+<li>用CAS操作将取出的数据替换当前对象的Mark Word中，如果成功，则说明释放锁成功，否则执行（3）；</li>
+<li>如果CAS操作替换失败，说明有其他线程尝试获取该锁，则需要在释放锁的同时需要唤醒被挂起的线程。</li>
 </ol>
 <p>对于轻量级锁，其性能提升的依据是“对于绝大部分的锁，在整个生命周期内都是不会存在竞争的”，如果打破这个依据则除了互斥的开销外，还有额外的CAS操作，因此在有多线程竞争的情况下，轻量级锁比重量级锁更慢；</p>
 <hr>
-<p>下图是轻量级锁的获取和释放过程 </p>
-<p><img src="https://img-blog.csdn.net/20161124210716044" alt="轻量级锁"></p>
+<p>下图是轻量级锁的获取和释放过程</p>
+<img src="/post/23224/2.png" title="轻量级锁">
 <h2 id="3-6-偏向锁"><a href="#3-6-偏向锁" class="headerlink" title="3.6 偏向锁"></a>3.6 偏向锁</h2><p>引入偏向锁主要目的是：为了在无多线程竞争的情况下尽量减少不必要的轻量级锁执行路径。上面提到了轻量级锁的加锁解锁操作是需要依赖多次CAS原子指令的。那么偏向锁是如何来减少不必要的CAS操作呢？我们可以查看Mark  work的结构就明白了。只需要检查是否为偏向锁、锁标识为以及ThreadID即可，处理流程如下：<br><strong>获取锁</strong></p>
 <ol>
-<li>检测Mark Word是否为可偏向状态，即是否为偏向锁1，锁标识位为01； </li>
-<li>若为可偏向状态，则测试线程ID是否为当前线程ID，如果是，则执行步骤（5），否则执行步骤（3）； </li>
-<li>如果线程ID不为当前线程ID，则通过CAS操作竞争锁，竞争成功，则将Mark Word的线程ID替换为当前线程ID，否则执行线程（4）； </li>
-<li>通过CAS竞争锁失败，证明当前存在多线程竞争情况，当到达全局安全点，获得偏向锁的线程被挂起，偏向锁升级为轻量级锁，然后被阻塞在安全点的线程继续往下执行同步代码块； </li>
-<li>执行同步代码块 </li>
+<li>检测Mark Word是否为可偏向状态，即是否为偏向锁1，锁标识位为01；</li>
+<li>若为可偏向状态，则测试线程ID是否为当前线程ID，如果是，则执行步骤（5），否则执行步骤（3）；</li>
+<li>如果线程ID不为当前线程ID，则通过CAS操作竞争锁，竞争成功，则将Mark Word的线程ID替换为当前线程ID，否则执行线程（4）；</li>
+<li>通过CAS竞争锁失败，证明当前存在多线程竞争情况，当到达全局安全点，获得偏向锁的线程被挂起，偏向锁升级为轻量级锁，然后被阻塞在安全点的线程继续往下执行同步代码块；</li>
+<li>执行同步代码块</li>
 </ol>
 <p><strong>释放锁</strong><br>偏向锁的释放采用了一种只有竞争才会释放锁的机制，线程是不会主动去释放偏向锁，需要等待其他线程来竞争。偏向锁的撤销需要等待全局安全点（这个时间点是上没有正在执行的代码）。其步骤如下：</p>
 <ol>
-<li>暂停拥有偏向锁的线程，判断锁对象石是否还处于被锁定状态； </li>
-<li>撤销偏向苏，恢复到无锁状态（01）或者轻量级锁的状态； </li>
+<li>暂停拥有偏向锁的线程，判断锁对象石是否还处于被锁定状态；</li>
+<li>撤销偏向苏，恢复到无锁状态（01）或者轻量级锁的状态；</li>
 </ol>
-<p><img src="https://img-blog.csdn.net/20161124210648183" alt="偏向锁"></p>
+<img src="/post/23224/5.png" title="偏向锁">
 <h2 id="3-7-重量级锁"><a href="#3-7-重量级锁" class="headerlink" title="3.7 重量级锁"></a>3.7 重量级锁</h2><p>重量级锁通过对象内部的监视器（monitor）实现，其中monitor的本质是依赖于底层操作系统的Mutex Lock实现，操作系统实现线程之间的切换需要从用户态到内核态的切换，切换成本非常高。</p>
-<h1 id="4-不同锁的比较"><a href="#4-不同锁的比较" class="headerlink" title="4. 不同锁的比较"></a>4. 不同锁的比较</h1><p><img src="https://img-blog.csdn.net/20161124211034845" alt="锁比较"></p>
+<h1 id="4-不同锁的比较"><a href="#4-不同锁的比较" class="headerlink" title="4. 不同锁的比较"></a>4. 不同锁的比较</h1><img src="/post/23224/4.png" title="锁比较">
 <h1 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h1><blockquote>
 <p>《Java并发编程的艺术》</p>
 <p><a href="http://cmsblogs.com/?p=2071" target="_blank" rel="noopener">死磕并发</a></p>
@@ -737,7 +766,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习7：数据访问/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/63188.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -756,7 +785,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习7：数据访问/" itemprop="url">SpringBoot学习7：数据访问</a></h1>
+                <a class="post-title-link" href="/post/63188.html" itemprop="url">SpringBoot学习7：数据访问</a></h1>
         
 
         <div class="post-meta">
@@ -812,6 +841,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.2k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  11分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -861,7 +921,7 @@
 <p>1、department.sql</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">Navicat MySQL Data Transfer</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Source Server         : 192.168.179.131</span></span><br><span class="line"><span class="comment">Source Server Version : 50719</span></span><br><span class="line"><span class="comment">Source Host           : 192.168.179.131:3306</span></span><br><span class="line"><span class="comment">Source Database       : jdbc</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Target Server Type    : MYSQL</span></span><br><span class="line"><span class="comment">Target Server Version : 50719</span></span><br><span class="line"><span class="comment">File Encoding         : 65001</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">Date: 2018-05-14 14:28:52</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> FOREIGN_KEY_CHECKS=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="comment">-- Table structure for department</span></span><br><span class="line"><span class="comment">-- ----------------------------</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`department`</span>;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`department`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`departmentName`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="string">''</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</span><br></pre></td></tr></table></figure>
 <p>2、将department.sql命名为schema-all.sql</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\45.schema-all.jpg" alt="45.schema-all"></p>
+<p><img src="/post/工作文档\SpringBoot\images\45.schema-all.jpg" alt="45.schema-all"></p>
 <p>3、运行测试类</p>
 <p>自定义sql的文件名，department.sql在配置文件中</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">schema:</span></span><br><span class="line"><span class="attr">  - classpath:</span><span class="string">department.sql</span></span><br></pre></td></tr></table></figure>
@@ -870,9 +930,9 @@
 <p>1、新建一个Controller</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String ,Object&gt; <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; list = jdbcTemplate.queryForList(<span class="string">"select * from department"</span>);</span><br><span class="line">        <span class="keyword">return</span> list.get(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2、表中添加数据</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\46.department.jpg" alt="46.department"></p>
+<p><img src="/post/工作文档\SpringBoot\images\46.department.jpg" alt="46.department"></p>
 <p>3、访问请求查询数据</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\47.hello.jpg" alt="47.hello"></p>
+<p><img src="/post/工作文档\SpringBoot\images\47.hello.jpg" alt="47.hello"></p>
 <h2 id="2、自定义数据源"><a href="#2、自定义数据源" class="headerlink" title="2、自定义数据源"></a>2、自定义数据源</h2><p>1、导入Druid的依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>2、修改配置文件</p>
@@ -883,7 +943,7 @@
 <p>4、Druid配置监控</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource"</span>)</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">druid</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//配置Druid的监控</span></span><br><span class="line">    <span class="comment">//1、配置一个管理后台</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletRegistrationBean <span class="title">statViewServlet</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ServletRegistrationBean bean = <span class="keyword">new</span> ServletRegistrationBean(<span class="keyword">new</span> StatViewServlet(),<span class="string">"/druid/*"</span>);</span><br><span class="line">        Map&lt;String,String&gt; initParams =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"loginUsername"</span>, <span class="string">"admin"</span>);</span><br><span class="line">        initParams.put(<span class="string">"loginPassword"</span>, <span class="string">"123456"</span>);</span><br><span class="line">        bean.setInitParameters(initParams);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2、配置监控的filter</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">webstatFilter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        FilterRegistrationBean bean = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> WebStatFilter());</span><br><span class="line"></span><br><span class="line">        Map&lt;String,String&gt; initParams =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"exclusions"</span>, <span class="string">"*.js,*.css,/druid/*"</span>);</span><br><span class="line">        bean.setInitParameters(initParams);</span><br><span class="line">        bean.setUrlPatterns(Arrays.asList(<span class="string">"/*"</span>));</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>5、运行测试，访问 localhost:9000/druid</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\48.druid.jpg" alt="48.druid"></p>
+<p><img src="/post/工作文档\SpringBoot\images\48.druid.jpg" alt="48.druid"></p>
 <p>输入刚才调好的用户名密码即可访问</p>
 <h2 id="3、整合Mybatis"><a href="#3、整合Mybatis" class="headerlink" title="3、整合Mybatis"></a>3、整合Mybatis</h2><p>1、新建工程，SpringBoot1.5+web+JDBC+Mysql</p>
 <p>导入依赖</p>
@@ -911,7 +971,7 @@
 <p>件夹下的mapper</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//主配置类或者mybatis配置类</span></span><br><span class="line"><span class="meta">@MapperScan</span>(value = <span class="string">"com.wdjr.springboot.mapper"</span>)</span><br></pre></td></tr></table></figure>
 <h3 id="配置文件方式"><a href="#配置文件方式" class="headerlink" title="配置文件方式"></a>配置文件方式</h3><p>1、新建文件</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\50.mybatisxml.jpg" alt="50.mybatisxml"></p>
+<p><img src="/post/工作文档\SpringBoot\images\50.mybatisxml.jpg" alt="50.mybatisxml"></p>
 <p>2、新建mybatis的配置文件</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration</span></span><br><span class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>3、新建Employee的接口方法</p>
@@ -924,7 +984,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    EmployeeMapper employeeMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/getEmp/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmp</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> employeeMapper.getEmpById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/insertEmp"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">insertEmp</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">        employeeMapper.insetEmp(employee);</span><br><span class="line">        <span class="keyword">return</span> employee;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4、JPA数据访问"><a href="#4、JPA数据访问" class="headerlink" title="4、JPA数据访问"></a>4、JPA数据访问</h2><p>新建工程 springBoot1.5+Web+JPA+MYSQL+JDBC</p>
 <p>目录结构</p>
-<p><img src="/2018/11/06/SpringBoot学习7：数据访问/工作文档\SpringBoot\images\51.JPA.jpg" alt="51.JPA"></p>
+<p><img src="/post/工作文档\SpringBoot\images\51.JPA.jpg" alt="51.JPA"></p>
 <p>1、新建一个实体类User</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用JPA注解配置映射关系</span></span><br><span class="line"><span class="meta">@Entity</span><span class="comment">//告诉JPA这是一个实体类（和数据表映射的类）</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"tbl_user"</span>) <span class="comment">//@Table来指定和那个数据表对应，如果省略默认表明就是user;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span> <span class="comment">//这是一个主键</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)<span class="comment">//自增组件</span></span><br><span class="line">    <span class="keyword">private</span> Integer id ;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"last_name"</span>,length = <span class="number">50</span>) <span class="comment">//这是和数据表对应的一个列</span></span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="meta">@Column</span><span class="comment">//省略默认列名就是属性名</span></span><br><span class="line">    <span class="keyword">private</span> String email;</span><br><span class="line">    <span class="meta">@Column</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLastName</span><span class="params">(String lastName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> email;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.email = email;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>2、新建一个UserRepository来继承jpa的绝大多数功能</p>
@@ -981,7 +1041,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习6：Docker/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/61809.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -1000,7 +1060,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习6：Docker/" itemprop="url">SpringBoot学习6：Docker</a></h1>
+                <a class="post-title-link" href="/post/61809.html" itemprop="url">SpringBoot学习6：Docker</a></h1>
         
 
         <div class="post-meta">
@@ -1056,6 +1116,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  684字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1090,7 +1181,7 @@
 <h3 id="2、在linux上安装docker"><a href="#2、在linux上安装docker" class="headerlink" title="2、在linux上安装docker"></a>2、在linux上安装docker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">1、查看centos版本</span><br><span class="line"><span class="meta">#</span> uname -r</span><br><span class="line">3.10.0-693.el7.x86_64</span><br><span class="line">要求：大于3.10</span><br><span class="line">如果小于的话升级*（选做）</span><br><span class="line"><span class="meta">#</span> yum update</span><br><span class="line">2、安装docker</span><br><span class="line"><span class="meta">#</span> yum install docker</span><br><span class="line">3、启动docker</span><br><span class="line"><span class="meta">#</span> systemctl start docker</span><br><span class="line"><span class="meta">#</span> docker -v</span><br><span class="line">4、开机启动docker</span><br><span class="line"><span class="meta">#</span> systemctl enable docker</span><br><span class="line">5、停止docker</span><br><span class="line"><span class="meta">#</span> systemctl stop docker</span><br></pre></td></tr></table></figure>
 <h2 id="4、docker的常用操作"><a href="#4、docker的常用操作" class="headerlink" title="4、docker的常用操作"></a>4、docker的常用操作</h2><h3 id="1、镜像操作"><a href="#1、镜像操作" class="headerlink" title="1、镜像操作"></a>1、镜像操作</h3><p>1、搜索</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
-<p>默认去docker hub网站查找<img src="/2018/11/06/SpringBoot学习6：Docker/工作文档\SpringBoot\images\44.docker1.jpg" alt="44.docker1"></p>
+<p>默认去docker hub网站查找<img src="/post/工作文档\SpringBoot\images\44.docker1.jpg" alt="44.docker1"></p>
 <p>2、拉取</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">默认最新版本</span><br><span class="line"><span class="meta">#</span> docekr pull mysql</span><br><span class="line">安装指定版本</span><br><span class="line"><span class="meta">#</span> docker pull mysql:5.5</span><br></pre></td></tr></table></figure>
 <p>3、查看</p>
@@ -1150,7 +1241,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习5：web开发/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/59461.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -1169,7 +1260,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习5：web开发/" itemprop="url">SpringBoot学习5：web开发</a></h1>
+                <a class="post-title-link" href="/post/59461.html" itemprop="url">SpringBoot学习5：web开发</a></h1>
         
 
         <div class="post-meta">
@@ -1225,6 +1316,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  10.9k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  55分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -1255,15 +1377,15 @@
 <h3 id="1、webjar"><a href="#1、webjar" class="headerlink" title="1、webjar"></a>1、webjar</h3><p>1)、所有的/webjars/**，都去classpath:/META-INF/resources/webjars/找资源；</p>
 <p>​    webjars：以jar包的方式引入静态资源</p>
 <p><a href="http://www.webjars.org/" target="_blank" rel="noopener">http://www.webjars.org/</a></p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\12.jquery.jpg" alt="12.jquery"></p>
+<p><img src="/post/工作文档\SpringBoot\images\12.jquery.jpg" alt="12.jquery"></p>
 <p>localhost:8080/webjars/jquery/3.3.1/jquery.js</p>
 <h3 id="2、本地资源"><a href="#2、本地资源" class="headerlink" title="2、本地资源"></a>2、本地资源</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private String staticPathPattern = &quot;/**&quot;;</span><br></pre></td></tr></table></figure>
 <p>访问任何资源</p>
 <p>2、会在这几文件夹下去找静态路径（静态资源文件夹）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;classpath:/META-INF/resources/&quot;, </span><br><span class="line">&quot;classpath:/resources/&quot;,</span><br><span class="line">&quot;classpath:/static/&quot;, </span><br><span class="line">&quot;classpath:/public/&quot;,</span><br><span class="line">&quot;/&quot;;当前项目的根路径</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\13.static.jpg" alt="13.static"></p>
+<p><img src="/post/工作文档\SpringBoot\images\13.static.jpg" alt="13.static"></p>
 <p>localhost:8080/abc ==&gt;去静态资源文件夹中找abc</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\14.static-css.jpg" alt="14.static-css"></p>
+<p><img src="/post/工作文档\SpringBoot\images\14.static-css.jpg" alt="14.static-css"></p>
 <p>3、index页面欢迎页，静态资源文件夹下所有的index.html页面；被“/**”映射；</p>
 <p>localhost:8080/  –&gt;index页面</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> WelcomePageHandlerMapping <span class="title">welcomePageHandlerMapping</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      ResourceProperties resourceProperties)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> WelcomePageHandlerMapping(resourceProperties.getWelcomePage(),</span><br><span class="line">         <span class="keyword">this</span>.mvcProperties.getStaticPathPattern());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1288,9 +1410,9 @@
 <p>1）、th:text=”${hello}”可以使用任意标签 替换原生的任何属性</p>
 <p><strong>在SpringBoot的环境下</strong></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"testid"</span> <span class="attr">class</span>=<span class="string">"testcalss"</span> <span class="attr">th:id</span>=<span class="string">"$&#123;Lion&#125;"</span> <span class="attr">th:class</span>=<span class="string">"$&#123;Lion&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;Lion&#125;"</span>&gt;</span></span><br><span class="line">	前端数据</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\15.thtmeleaf-th01.jpg" alt="15.thtmeleaf-th01"></p>
+<p><img src="/post/工作文档\SpringBoot\images\15.thtmeleaf-th01.jpg" alt="15.thtmeleaf-th01"></p>
 <p><strong>直接访问HTML页面</strong></p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\15.thtmeleaf-th02.jpg" alt="15.thtmeleaf-th02"></p>
+<p><img src="/post/工作文档\SpringBoot\images\15.thtmeleaf-th02.jpg" alt="15.thtmeleaf-th02"></p>
 <p><strong>2)、内联写法注意需要在body上加上 th:inline=”text”敲黑板</strong></p>
 <p>不然不起作用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"text-center"</span> <span class="attr">th:inline</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1454,11 +1576,11 @@
 <p>3、在页面中使用fmt:message，取出国际化内容</p>
 <h4 id="1、浏览器切换国际化"><a href="#1、浏览器切换国际化" class="headerlink" title="1、浏览器切换国际化"></a>1、浏览器切换国际化</h4><p>步骤</p>
 <p>1、编写国际化配置文件，抽取页面需要的显示的国际化消息</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\16.national.jpg" alt="16.national"></p>
+<p><img src="/post/工作文档\SpringBoot\images\16.national.jpg" alt="16.national"></p>
 <p>2、SpringBoot自动配置好了国际化配置的资源文件</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.messages"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageSourceAutoConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="comment">//我们的配置文件可以直接放在类路径下叫messages.properties</span></span><br><span class="line">    <span class="keyword">private</span> String basename = <span class="string">"messages"</span>;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> MessageSource <span class="title">messageSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ResourceBundleMessageSource messageSource = <span class="keyword">new</span> ResourceBundleMessageSource();</span><br><span class="line">		<span class="keyword">if</span> (StringUtils.hasText(<span class="keyword">this</span>.basename)) &#123;</span><br><span class="line">            <span class="comment">//设置国际化文件的基础名，去掉语言国家代码</span></span><br><span class="line">			messageSource.setBasenames(StringUtils.commaDelimitedListToStringArray(</span><br><span class="line">					StringUtils.trimAllWhitespace(<span class="keyword">this</span>.basename)));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.encoding != <span class="keyword">null</span>) &#123;</span><br><span class="line">			messageSource.setDefaultEncoding(<span class="keyword">this</span>.encoding.name());</span><br><span class="line">		&#125;</span><br><span class="line">		messageSource.setFallbackToSystemLocale(<span class="keyword">this</span>.fallbackToSystemLocale);</span><br><span class="line">		messageSource.setCacheSeconds(<span class="keyword">this</span>.cacheSeconds);</span><br><span class="line">		messageSource.setAlwaysUseMessageFormat(<span class="keyword">this</span>.alwaysUseMessageFormat);</span><br><span class="line">		<span class="keyword">return</span> messageSource;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>3、对IDEA的编码进行设置</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\17.encoding.jpg" alt="17.encoding"></p>
+<p><img src="/post/工作文档\SpringBoot\images\17.encoding.jpg" alt="17.encoding"></p>
 <p>4、login进行标签插入</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- saved from url=(0051)https://getbootstrap.com/docs/4.1/examples/sign-in/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span> <span class="attr">xmlns:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=UTF-8"</span> /&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, shrink-to-fit=no"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"author"</span> <span class="attr">content</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"icon"</span> <span class="attr">href</span>=<span class="string">"https://getbootstrap.com/favicon.ico"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>登录页面<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Bootstrap core CSS --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/css/bootstrap.min.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Custom styles for this template --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"./login_files/signin.css"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/css/signin.css&#125;"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">"text-center"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"form-signin"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">"mb-4"</span> <span class="attr">src</span>=<span class="string">"./login_files/bootstrap-solid.svg"</span> <span class="attr">th:src</span>=<span class="string">"@&#123;/img/bootstrap-solid.svg&#125;"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">width</span>=<span class="string">"72"</span> <span class="attr">height</span>=<span class="string">"72"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"h3 mb-3 font-weight-normal"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.tip&#125;"</span>&gt;</span>Please sign in<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span>  <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.username&#125;"</span>&gt;</span>Username<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>  <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.username&#125;"</span> <span class="attr">required</span>=<span class="string">""</span> <span class="attr">autofocus</span>=<span class="string">""</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"inputPassword"</span> <span class="attr">class</span>=<span class="string">"sr-only"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.password&#125;"</span>&gt;</span>Password<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"inputPassword"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">th:placeholder</span>=<span class="string">"#&#123;login.password&#125;"</span> <span class="attr">required</span>=<span class="string">""</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"checkbox mb-3"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">value</span>=<span class="string">"remember-me"</span> /&gt;</span> [[#&#123;login.remember&#125;]]</span><br><span class="line">        <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-lg btn-primary btn-block"</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">th:text</span>=<span class="string">"#&#123;login.btn&#125;"</span>&gt;</span>Sign in<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"mt-5 mb-3 text-muted"</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>效果根据浏览器语言的信息切换国际化</p>
@@ -1466,7 +1588,7 @@
 <p>国际化locale（区域信息对象）；LocaleResolver(获取区域对象)；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="meta">@ConditionalOnMissingBean</span></span><br><span class="line"><span class="meta">@ConditionalOnProperty</span>(prefix = <span class="string">"spring.mvc"</span>, name = <span class="string">"locale"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> LocaleResolver <span class="title">localeResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.mvcProperties</span><br><span class="line">        .getLocaleResolver() == WebMvcProperties.LocaleResolver.FIXED) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> FixedLocaleResolver(<span class="keyword">this</span>.mvcProperties.getLocale());</span><br><span class="line">    &#125;</span><br><span class="line">    AcceptHeaderLocaleResolver localeResolver = <span class="keyword">new</span> AcceptHeaderLocaleResolver();</span><br><span class="line">    localeResolver.setDefaultLocale(<span class="keyword">this</span>.mvcProperties.getLocale());</span><br><span class="line">    <span class="keyword">return</span> localeResolver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>默认的就是根据请求头带来的区域信息获取local国际化信息（截图就是这么犀利）</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\18.accept-language.jpg" alt="18.accept-language"></p>
+<p><img src="/post/工作文档\SpringBoot\images\18.accept-language.jpg" alt="18.accept-language"></p>
 <h4 id="2、点击链接切换国际化"><a href="#2、点击链接切换国际化" class="headerlink" title="2、点击链接切换国际化"></a>2、点击链接切换国际化</h4><p>自己编写localResolver，加到容器中</p>
 <p>1、更改HTML代码</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"mt-5 mb-3 text-muted"</span>&gt;</span>© 2017-2018<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index.html?lg=zh_CN&#125;"</span>&gt;</span>中文<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"btn btn-sm"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/index.html?lg=en_US&#125;"</span>&gt;</span>English<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1602,7 +1724,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    EmployeeDao employeeDao;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 查询所有员工返回列表页面</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(value = <span class="string">"/emps"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Collection&lt;Employee&gt; employees = employeeDao.getAll();</span><br><span class="line">        model.addAttribute(<span class="string">"emps"</span>,employees);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"emp/list"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="2、-遍历对象"><a href="#2、-遍历对象" class="headerlink" title="2、 遍历对象"></a>2、 遍历对象</h4><p>list.html中 使用模板的 <code>th:each</code>方法</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">table class="table table-striped table-sm"&gt;</span><br><span class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>#<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>lastName<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>email<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>gender<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>department<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>birth<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"emp:$&#123;emps&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;emp.id&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;emp.lastName&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;emp.email&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;emp.gender&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;emp.department.departmentName&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(emp.birth,'yyyy-MM-dd HH:mm:ss')&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-primary"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-danger"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="3、效果显示"><a href="#3、效果显示" class="headerlink" title="3、效果显示"></a>3、效果显示</h4><p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\19.table list.jpg" alt="19.table list"></p>
+<h4 id="3、效果显示"><a href="#3、效果显示" class="headerlink" title="3、效果显示"></a>3、效果显示</h4><p><img src="/post/工作文档\SpringBoot\images\19.table list.jpg" alt="19.table list"></p>
 <h3 id="7、员工添加（增）"><a href="#7、员工添加（增）" class="headerlink" title="7、员工添加（增）"></a>7、员工添加（增）</h3><p>功能：点击添加按钮，出现新增页面</p>
 <h4 id="1、新增页面"><a href="#1、新增页面" class="headerlink" title="1、新增页面"></a>1、新增页面</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- LastName --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"LastName"</span>&gt;</span>LastName<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"LastName"</span>  <span class="attr">placeholder</span>=<span class="string">"LastName"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Email --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"Email"</span>&gt;</span>Email<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"Email"</span>  <span class="attr">placeholder</span>=<span class="string">"zhangsan@163.com"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--gender--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> &gt;</span>Gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span> &gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span> &gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- department --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"exampleFormControlSelect1"</span>&gt;</span>department<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"exampleFormControlSelect1"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:each</span>=<span class="string">"dept:$&#123;depts&#125;"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;dept.id&#125;"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;dept.departmentName&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--Birth--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"birthDate"</span>&gt;</span>Birth<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">id</span>=<span class="string">"birthDate"</span> <span class="attr">placeholder</span>=<span class="string">"2012-12-12"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span>&gt;</span>添 加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h4 id="2、页面跳转"><a href="#2、页面跳转" class="headerlink" title="2、页面跳转"></a>2、页面跳转</h4><p>在EmployeeController中添加addEmpPage方法</p>
@@ -1641,7 +1763,7 @@
 <p>return false;禁用btn提交效果</p>
 </blockquote>
 <h2 id="7、错误机制的处理"><a href="#7、错误机制的处理" class="headerlink" title="7、错误机制的处理"></a>7、错误机制的处理</h2><h3 id="1、默认的错误处理机制"><a href="#1、默认的错误处理机制" class="headerlink" title="1、默认的错误处理机制"></a>1、默认的错误处理机制</h3><p>默认错误页面</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\20.error.jpg" alt="20.error"></p>
+<p><img src="/post/工作文档\SpringBoot\images\20.error.jpg" alt="20.error"></p>
 <p>原理参照</p>
 <p>ErrorMvcAutoConfiguration:错误处理的自动配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org\springframework\boot\spring-boot-autoconfigure\1.5.12.RELEASE\spring-boot-autoconfigure-1.5.12.RELEASE.jar!\org\springframework\boot\autoconfigure\web\ErrorMvcAutoConfiguration.class</span><br></pre></td></tr></table></figure>
@@ -1679,9 +1801,9 @@
 <p>​        3.没有放模板引擎，没放静态，会显示默认的错误</p>
 <p>​    2）、如何定义错误的数据</p>
 <p>举例子：新建4xx和5xx文件</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\21.error-static.jpg" alt="21.error-static"></p>
+<p><img src="/post/工作文档\SpringBoot\images\21.error-static.jpg" alt="21.error-static"></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>status: [[$&#123;status&#125;]]<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>timestamp: [[$&#123;timestamp&#125;]]<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>error: [[$&#123;error&#125;]]<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>message: [[$&#123;message&#125;]]<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>exception: [[$&#123;exception&#125;]]<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\22.4xxhtml.jpg" alt="22.4xxhtml"></p>
+<p><img src="/post/工作文档\SpringBoot\images\22.4xxhtml.jpg" alt="22.4xxhtml"></p>
 <h3 id="3、如何定制Json数据"><a href="#3、如何定制Json数据" class="headerlink" title="3、如何定制Json数据"></a>3、如何定制Json数据</h3><h4 id="1、仅发送json数据"><a href="#1、仅发送json数据" class="headerlink" title="1、仅发送json数据"></a>1、仅发送json数据</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserNotExitsException</span> <span class="keyword">extends</span>  <span class="title">RuntimeException</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserNotExitsException</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(<span class="string">"用户不存在"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 异常处理器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyExceptionHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@ExceptionHandler</span>(UserNotExitsException.class)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String ,Object&gt; <span class="title">handlerException</span><span class="params">(Exception e)</span></span>&#123;</span><br><span class="line">        Map&lt;String ,Object&gt; map =<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">"code"</span>, <span class="string">"user not exist"</span>);</span><br><span class="line">        map.put(<span class="string">"message"</span>, e.getMessage());</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>无法自适应 都是返回的json数据</p>
@@ -1699,7 +1821,7 @@
 <p>在上面的MyErrorAttributes类中加上</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//我们的异常处理器</span></span><br><span class="line">Map&lt;String,Object&gt; ext = (Map&lt;String, Object&gt;) requestAttributes.getAttribute(<span class="string">"ext"</span>, <span class="number">0</span>);</span><br><span class="line">map.put(<span class="string">"ext"</span>, ext);</span><br></pre></td></tr></table></figure>
 <h2 id="8、配置嵌入式servlet容器"><a href="#8、配置嵌入式servlet容器" class="headerlink" title="8、配置嵌入式servlet容器"></a>8、配置嵌入式servlet容器</h2><h3 id="1、定制和修改Servlet容器"><a href="#1、定制和修改Servlet容器" class="headerlink" title="1、定制和修改Servlet容器"></a>1、定制和修改Servlet容器</h3><p>SpringBoot默认使用Tomcat作为嵌入式的Servlet容器；</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\23.tomcat emd.jpg" alt="23.tomcat emd"></p>
+<p><img src="/post/工作文档\SpringBoot\images\23.tomcat emd.jpg" alt="23.tomcat emd"></p>
 <p>问题？</p>
 <p>1）、如何定制和修改Servlet容器；</p>
 <p>1、 修改Server相关的配置文件 application.properties</p>
@@ -1732,9 +1854,9 @@
 <p>1）、EmbeddedServletContainerFactory（嵌入式Servlet容器工厂）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmbeddedServletContainerFactory</span> </span>&#123;</span><br><span class="line">	<span class="comment">//获取嵌入式的Servlet容器</span></span><br><span class="line">   <span class="function">EmbeddedServletContainer <span class="title">getEmbeddedServletContainer</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">         ServletContextInitializer... initializers)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>继承关系</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\24.EmdServletFactory.jpg" alt="24.EmdServletFactory"></p>
+<p><img src="/post/工作文档\SpringBoot\images\24.EmdServletFactory.jpg" alt="24.EmdServletFactory"></p>
 <p>2）、EmbeddedServletContainer:(嵌入式的Servlet容器)</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\25.EmdServletContainer.jpg" alt="25.EmdServletContainer"></p>
+<p><img src="/post/工作文档\SpringBoot\images\25.EmdServletContainer.jpg" alt="25.EmdServletContainer"></p>
 <p>3）、TomcatEmbeddedServletContainerFactory为例 </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> EmbeddedServletContainer <span class="title">getEmbeddedServletContainer</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">      ServletContextInitializer... initializers)</span> </span>&#123;</span><br><span class="line">   Tomcat tomcat = <span class="keyword">new</span> Tomcat();</span><br><span class="line">    <span class="comment">//配置tomcat的基本环节</span></span><br><span class="line">   File baseDir = (<span class="keyword">this</span>.baseDirectory != <span class="keyword">null</span> ? <span class="keyword">this</span>.baseDirectory</span><br><span class="line">         : createTempDir(<span class="string">"tomcat"</span>));</span><br><span class="line">   tomcat.setBaseDir(baseDir.getAbsolutePath());</span><br><span class="line">   Connector connector = <span class="keyword">new</span> Connector(<span class="keyword">this</span>.protocol);</span><br><span class="line">   tomcat.getService().addConnector(connector);</span><br><span class="line">   customizeConnector(connector);</span><br><span class="line">   tomcat.setConnector(connector);</span><br><span class="line">   tomcat.getHost().setAutoDeploy(<span class="keyword">false</span>);</span><br><span class="line">   configureEngine(tomcat.getEngine());</span><br><span class="line">   <span class="keyword">for</span> (Connector additionalConnector : <span class="keyword">this</span>.additionalTomcatConnectors) &#123;</span><br><span class="line">      tomcat.getService().addConnector(additionalConnector);</span><br><span class="line">   &#125;</span><br><span class="line">   prepareContext(tomcat.getHost(), initializers);</span><br><span class="line">    <span class="comment">//将配置好的tomcat传入进去；并且启动tomcat容器</span></span><br><span class="line">   <span class="keyword">return</span> getTomcatEmbeddedServletContainer(tomcat);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>4）、嵌入式配置修改</p>
@@ -1775,34 +1897,34 @@
 <p>​    缺点：默认不支持JSP、优化定制比较复杂（使用定制器【ServerProperties、自定义定制器】，自己来编写嵌入式的容器工厂）</p>
 <p>外置的Servlet容器：外面安装Tomcat是以war包的方式打包。</p>
 <h3 id="1、IDEA操作外部Servlet"><a href="#1、IDEA操作外部Servlet" class="headerlink" title="1、IDEA操作外部Servlet"></a>1、IDEA操作外部Servlet</h3><p>1、创建程序为war程序</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\26.tomcat1.jpg" alt="26.tomcat1"></p>
+<p><img src="/post/工作文档\SpringBoot\images\26.tomcat1.jpg" alt="26.tomcat1"></p>
 <p>2、选择版本</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\27.tomcat2.jpg" alt="27.tomcat2"></p>
+<p><img src="/post/工作文档\SpringBoot\images\27.tomcat2.jpg" alt="27.tomcat2"></p>
 <p>3、添加tomcat</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\28.tomcat3.jpg" alt="28.tomcat3"></p>
+<p><img src="/post/工作文档\SpringBoot\images\28.tomcat3.jpg" alt="28.tomcat3"></p>
 <p>4、选择tomcat</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\30.tomcat4.jpg" alt="30.tomcat4"></p>
+<p><img src="/post/工作文档\SpringBoot\images\30.tomcat4.jpg" alt="30.tomcat4"></p>
 <p>5、选择本地的Tomcat</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\31.tomcat5.jpg" alt="31.tomcat5"></p>
+<p><img src="/post/工作文档\SpringBoot\images\31.tomcat5.jpg" alt="31.tomcat5"></p>
 <p>6、配置tomcat路径</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\32.tomcat6.jpg" alt="32.tomcat6"></p>
+<p><img src="/post/工作文档\SpringBoot\images\32.tomcat6.jpg" alt="32.tomcat6"></p>
 <p>7、添加服务器</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\33.tomcat7.jpg" alt="33.tomcat7"></p>
+<p><img src="/post/工作文档\SpringBoot\images\33.tomcat7.jpg" alt="33.tomcat7"></p>
 <p>8、添加exploded的war配置，应用OK tomcat配置完成</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\34.tomcat8.jpg" alt="34.tomcat8"></p>
+<p><img src="/post/工作文档\SpringBoot\images\34.tomcat8.jpg" alt="34.tomcat8"></p>
 <p>二、配置webapp文件夹</p>
 <p>1、点击配置</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\35.tomcat9.jpg" alt="35.tomcat9"></p>
+<p><img src="/post/工作文档\SpringBoot\images\35.tomcat9.jpg" alt="35.tomcat9"></p>
 <p>2、添加webapp目录</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\36.tomcat10.jpg" alt="36.tomcat10"></p>
+<p><img src="/post/工作文档\SpringBoot\images\36.tomcat10.jpg" alt="36.tomcat10"></p>
 <p>3、默认配置就可以</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\37.tomcat11.jpg" alt="37.tomcat11"></p>
+<p><img src="/post/工作文档\SpringBoot\images\37.tomcat11.jpg" alt="37.tomcat11"></p>
 <p>4、配置web.xml文件</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\38.tomcat12.jpg" alt="38.tomcat12"></p>
+<p><img src="/post/工作文档\SpringBoot\images\38.tomcat12.jpg" alt="38.tomcat12"></p>
 <p>5、文档目录结构</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\39.tomcat13.jpg" alt="39.tomcat13"></p>
+<p><img src="/post/工作文档\SpringBoot\images\39.tomcat13.jpg" alt="39.tomcat13"></p>
 <h3 id="2、运行一个示例"><a href="#2、运行一个示例" class="headerlink" title="2、运行一个示例"></a>2、运行一个示例</h3><p>1、项目目录</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\40.demo1.jpg" alt="40.demo1"></p>
+<p><img src="/post/工作文档\SpringBoot\images\40.demo1.jpg" alt="40.demo1"></p>
 <p>2、配置文件写视图解析前后缀</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.mvc.view.prefix=/WEB-INF/jsp/</span><br><span class="line"></span><br><span class="line">spring.mvc.view.suffix=.jsp</span><br></pre></td></tr></table></figure>
 <p>3、HelloController</p>
@@ -1810,7 +1932,7 @@
 <p>4、success.jsp</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Success&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;Success&lt;/h1&gt;</span><br><span class="line">message:$&#123;message&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>5、运行结果</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\41.demo2.jpg" alt="41.demo2"></p>
+<p><img src="/post/工作文档\SpringBoot\images\41.demo2.jpg" alt="41.demo2"></p>
 <p>步骤</p>
 <p>1、必须创建一个war项目；</p>
 <p>2、将嵌入式的Tomcat指定为provided</p>
@@ -1829,7 +1951,7 @@
 <p>流程：</p>
 <p>1、启动Tomcat服务器</p>
 <p>2、spring web模块里有这个文件</p>
-<p><img src="/2018/11/06/SpringBoot学习5：web开发/工作文档\SpringBoot\images\42.servletContainerInit.jpg" alt="42.servletContainerInit"></p>
+<p><img src="/post/工作文档\SpringBoot\images\42.servletContainerInit.jpg" alt="42.servletContainerInit"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.web.SpringServletContainerInitializer</span><br></pre></td></tr></table></figure>
 <p>3、SpringServletContainerInitializer将handlerTypes标注的所有类型的类传入到onStartip方法的Set&lt;Class&lt;?&gt;&gt;;为这些感兴趣类创建实例</p>
 <p>4、每个创建好的WebApplicationInitializer调用自己的onStratup</p>
@@ -1887,7 +2009,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习4：日志/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/58798.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -1906,7 +2028,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习4：日志/" itemprop="url">SpringBoot学习4：日志</a></h1>
+                <a class="post-title-link" href="/post/58798.html" itemprop="url">SpringBoot学习4：日志</a></h1>
         
 
         <div class="post-meta">
@@ -1962,6 +2084,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.4k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2016,7 +2169,7 @@
 <h3 id="2、SLF4J使用"><a href="#2、SLF4J使用" class="headerlink" title="2、SLF4J使用"></a>2、SLF4J使用</h3><h4 id="1、如何在系统中使用SLF4j"><a href="#1、如何在系统中使用SLF4j" class="headerlink" title="1、如何在系统中使用SLF4j"></a>1、如何在系统中使用SLF4j</h4><p>以后开发的时候，日志记录方法的调用，不应该来直接调用日志的实现类，而是调用日志抽象层里面的方法；</p>
 <p>应该给系统里面导入slf4j的jar包和logback的实现jar</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(HelloWorld.class);</span><br><span class="line">    logger.info(<span class="string">"Hello World"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/06/SpringBoot学习4：日志/工作文档\SpringBoot\images\8.slf4j.jpg" alt="8.slf4j"></p>
+<p><img src="/post/工作文档\SpringBoot\images\8.slf4j.jpg" alt="8.slf4j"></p>
 <p>每个日志框架的实现框架都有自己的配置文件。使用slf4j以后，<strong>配置文件还是做成日志实现框架本身的配置文件</strong>；</p>
 <h4 id="2、遗留问题"><a href="#2、遗留问题" class="headerlink" title="2、遗留问题"></a>2、遗留问题</h4><p>a系统(slf4j+logback)：Spring（commons-logging）、Hibernate（jboss-logging）、Mybatis</p>
 <p>统一日志框架，即使是别的框架和我一起统一使用slf4j进行输出；</p>
@@ -2025,12 +2178,12 @@
 <p>2、用中间包来替换原有的日志框架/</p>
 <p>3、导入slf4j的其他实现</p>
 <h3 id="3、SpingBoot日志框架解析"><a href="#3、SpingBoot日志框架解析" class="headerlink" title="3、SpingBoot日志框架解析"></a>3、SpingBoot日志框架解析</h3><p>打开IDEA ，打开pom文件的依赖图形化显示</p>
-<p><img src="/2018/11/06/SpringBoot学习4：日志/工作文档\SpringBoot\images\9.IDEAdependencies.jpg" alt="9.IDEAdependencies"></p>
+<p><img src="/post/工作文档\SpringBoot\images\9.IDEAdependencies.jpg" alt="9.IDEAdependencies"></p>
 <p>SpringBoot的基础框架</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>SpringBoot的日志功能</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.1.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="/2018/11/06/SpringBoot学习4：日志/工作文档\SpringBoot\images\10.slf4jandlogback.jpg" alt="10.slf4jandlogback"></p>
+<p><img src="/post/工作文档\SpringBoot\images\10.slf4jandlogback.jpg" alt="10.slf4jandlogback"></p>
 <p>总结：</p>
 <ol>
 <li><p>SpringBoot底层也是使用SLF4J+log4jback</p>
@@ -2082,7 +2235,7 @@
 <p>如果不带后面的xx-spring.xml就会报错</p>
 <h3 id="3、切换日志框架"><a href="#3、切换日志框架" class="headerlink" title="3、切换日志框架"></a>3、切换日志框架</h3><p>可以根据slf4j的日志适配图，进行相关切换；</p>
 <h4 id="1、log4j"><a href="#1、log4j" class="headerlink" title="1、log4j"></a>1、log4j</h4><p>slf4j+log4j的方式；</p>
-<p><img src="/2018/11/06/SpringBoot学习4：日志/工作文档\SpringBoot\images\11.log4j.jpg" alt="11.log4j"></p>
+<p><img src="/post/工作文档\SpringBoot\images\11.log4j.jpg" alt="11.log4j"></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>logback-classic<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>ch.qos.logback<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.slf4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>slf4j-log4j12<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>不推荐使用仅作为演示</p>
 <h4 id="2、log4j2"><a href="#2、log4j2" class="headerlink" title="2、log4j2"></a>2、log4j2</h4><p>切换为log4j2</p>
@@ -2136,7 +2289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习3：配置文件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/57897.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -2155,7 +2308,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习3：配置文件/" itemprop="url">SpringBoot学习3：配置文件</a></h1>
+                <a class="post-title-link" href="/post/57897.html" itemprop="url">SpringBoot学习3：配置文件</a></h1>
         
 
         <div class="post-meta">
@@ -2210,6 +2363,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4.2k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  19分钟
+                </span>
+              
+            </div>
           
 
           
@@ -2362,7 +2546,7 @@
 <p>SpringBoot推荐给容器添加组件的方式：</p>
 <p>1、配置类=====Spring的xml配置文件（old）</p>
 <p>2、全注解方式@Configuration+@Bean（new）</p>
-<p><img src="/2018/11/06/SpringBoot学习3：配置文件/工作文档\SpringBoot\images\4.MyAppConfig.jpg" alt="4.MyAppConfig"></p>
+<p><img src="/post/工作文档\SpringBoot\images\4.MyAppConfig.jpg" alt="4.MyAppConfig"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Configuration</span>：指明当前类是一个配置类；就是来代替之前的Spring配置文件</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 在配置文件中用&lt;bean&gt;&lt;/bean&gt;标签添加组件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAppConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将方法的返回值添加到容器中；容器这个组件id就是方法名</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> HelloService <span class="title">helloService01</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"配置类给容器添加了HelloService组件"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> HelloService();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">ApplicationContext ioc;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHelloService</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> b = ioc.containsBean(<span class="string">"helloService01"</span>);</span><br><span class="line">    System.out.println(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> <em>容器这个组件id就是方法名</em> </p>
@@ -2385,7 +2569,7 @@
 <h3 id="3、激活指定profile"><a href="#3、激活指定profile" class="headerlink" title="3、激活指定profile"></a>3、激活指定profile</h3><p>1、在配置文件中激活</p>
 <p>2、命令行：</p>
 <p>–spring.profiles.active=dev</p>
-<p><img src="/2018/11/06/SpringBoot学习3：配置文件/工作文档\SpringBoot\images\5.comandLine.jpg" alt="5.comandLine"></p>
+<p><img src="/post/工作文档\SpringBoot\images\5.comandLine.jpg" alt="5.comandLine"></p>
 <p>优先级大于配置文件</p>
 <p>打包 成jar后</p>
 <p><code>java -jar spring-boot-02-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev</code></p>
@@ -2404,7 +2588,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; server.servlet.context-path=/boot03</span><br><span class="line">&gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>注：spring boot1x 是server.context.path=/boot02</p>
-<p><img src="/2018/11/06/SpringBoot学习3：配置文件/工作文档\SpringBoot\images\7.priority.jpg" alt="7.priority"></p>
+<p><img src="/post/工作文档\SpringBoot\images\7.priority.jpg" alt="7.priority"></p>
 <p>还可以通过spring.config.location来改变配置文件的位置</p>
 <p>项目打包好了以后，可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；指定配置文件和默认的配置文件会共同起作用，互补配置</p>
 <p><code>java -jar spring-boot-config-02-0.0.1-SNAPSHOT.jar --spring.config.location=E:/work/application.properties</code></p>
@@ -2590,7 +2774,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习2：Hello-World/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/2070.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -2609,7 +2793,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习2：Hello-World/" itemprop="url">SpringBoot学习2：Hello World</a></h1>
+                <a class="post-title-link" href="/post/2070.html" itemprop="url">SpringBoot学习2：Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -2665,6 +2849,37 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6分钟
+                </span>
+              
+            </div>
+          
 
           
 
@@ -2710,11 +2925,11 @@
 <p>AutoConfigurationImportSelector：导入组件选择器 </p>
 <p>将所有需要导入的组件以及全类名的方式返回；这些组件将以字符串数组 String[] 添加到容器中；</p>
 <p>会给容器非常多的自动配置类，（xxxAutoConfiguration）;就是给容器中导入这个场景需要的所有组件，并配置<br>好这些组件。 </p>
-<p><img src="/2018/11/06/SpringBoot学习2：Hello-World/工作文档\SpringBoot\images\1.configuration.jpg" alt="1.configuration"></p>
+<p><img src="/post/工作文档\SpringBoot\images\1.configuration.jpg" alt="1.configuration"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> List&lt;String&gt; <span class="title">getCandidateConfigurations</span><span class="params">(AnnotationMetadata metadata,</span></span></span><br><span class="line"><span class="function"><span class="params">AnnotationAttributes attributes)</span> </span>&#123;</span><br><span class="line">	List&lt;String&gt; configurations =</span><br><span class="line">SpringFactoriesLoader.loadFactoryNames(<span class="keyword">this</span>.getSpringFactoriesLoaderFactoryClass(),</span><br><span class="line"><span class="keyword">this</span>.getBeanClassLoader());</span><br><span class="line">	Assert.notEmpty(configurations, <span class="string">"No auto configuration classes found in META‐INF/spring.factories. If you are using a custom packaging, make sure that file is correct."</span>);</span><br><span class="line">	<span class="keyword">return</span> configurations;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(),</code><br><code>this.getBeanClassLoader());</code> </p>
 <p>Spring Boot在启动的时候从类路径下的META-INF/spring.factorys中获取的EnableAutoConfiguration指定的值；</p>
-<p>将这些值作为自动配置类导入到容器中，自动配置就生效了。 <img src="/2018/11/06/SpringBoot学习2：Hello-World/工作文档\SpringBoot\images\2.factories.jpg" alt="2.factories"></p>
+<p>将这些值作为自动配置类导入到容器中，自动配置就生效了。 <img src="/post/工作文档\SpringBoot\images\2.factories.jpg" alt="2.factories"></p>
 <p>J2EE的整体解决方案</p>
 <p>org\springframework\boot\spring-boot-autoconfigure\2.0.1.RELEASE\spring-boot-autoconfigure-2.0.1.RELEASE.jar </p>
 <h2 id="三、使用Spring-Initializer创建一个快速向导"><a href="#三、使用Spring-Initializer创建一个快速向导" class="headerlink" title="三、使用Spring Initializer创建一个快速向导"></a>三、使用Spring Initializer创建一个快速向导</h2><p>1.IDE支持使用Spring Initializer</p>
@@ -2783,7 +2998,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/SpringBoot学习1：入门及配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/23651.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -2802,7 +3017,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/SpringBoot学习1：入门及配置/" itemprop="url">SpringBoot学习1：入门及配置</a></h1>
+                <a class="post-title-link" href="/post/23651.html" itemprop="url">SpringBoot学习1：入门及配置</a></h1>
         
 
         <div class="post-meta">
@@ -2857,6 +3072,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  919字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4分钟
+                </span>
+              
+            </div>
           
 
           
@@ -2955,7 +3201,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/Java基础1：面向对象/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/post/22011.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Joe">
@@ -2974,7 +3220,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/06/Java基础1：面向对象/" itemprop="url">Java基础1:面向对象</a></h1>
+                <a class="post-title-link" href="/post/22011.html" itemprop="url">Java基础1:面向对象</a></h1>
         
 
         <div class="post-meta">
@@ -3029,6 +3275,37 @@
 
           
 
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  4分钟
+                </span>
+              
+            </div>
           
 
           
@@ -3257,6 +3534,15 @@
   <span class="author" itemprop="copyrightHolder">Joe</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">79.4k</span>
+  
 </div>
 
 
@@ -3272,22 +3558,12 @@
 
 
 
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      
-    </span>
-  
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共79.4k字</span>
 </div>
 
+        
 
 
 
@@ -3439,323 +3715,6 @@
 
 
   
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
 
