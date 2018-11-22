@@ -1,1 +1,2676 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="Write Once,Run Anywhere"><meta name="keywords" content="Java,并发,JVM,Spring,Spring Boot,源码,架构"><title>Joe's Blog | Learning Java</title><link rel="stylesheet" type="text/css" href="//fonts.neworld.org/css?family=Source+Code+Pro"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Joe's Blog</h1><a id="logo" href="/.">Joe's Blog</a><p class="description">Learning Java</p></div><div id="nav-menu"> <a href="/." class="current"><i class="fa fa-home">首页</i></a> <a href="/archives/"><i class="fa fa-archive">归档</i></a> <a href="/about/"><i class="fa fa-user">关于</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础10：理解Java异常/">Java基础10：理解Java异常</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-为什么要使用异常"><a href="#1-为什么要使用异常" class="headerlink" title="1. 为什么要使用异常"></a>1. 为什么要使用异常</h1><p>为了提高程序的健壮性，提高系统可用率。</p></div><p class="readmore"><a href="/2018/11/08/Java基础10：理解Java异常/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础9：深入理解内部类/">Java基础9：深入理解内部类</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h1><blockquote></blockquote></div><p class="readmore"><a href="/2018/11/08/Java基础9：深入理解内部类/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础8：Java类及包访问权限/">Java基础8：Java类及包访问权限</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-问题：一个”-java”源文件中是否可以包括多个类（不是内部类）？有什么限制？"><a href="#1-问题：一个”-java”源文件中是否可以包括多个类（不是内部类）？有什么限制？" class="headerlink" title="1. 问题：一个”.java”源文件中是否可以包括多个类（不是内部类）？有什么限制？"></a>1. 问题：一个”.java”源文件中是否可以包括多个类（不是内部类）？有什么限制？</h1><p>可以有多个类，但只能有一个public的类，并且public的类名必须与文件名相一致。一个文件中可以只有非public类，如果只有一个非public类，此类可以跟文件名不同。</p></div><p class="readmore"><a href="/2018/11/08/Java基础8：Java类及包访问权限/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础7：代码块与加载顺序/">Java基础7：代码块与加载顺序</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><p>代码块：用{}包围的代码</p></div><p class="readmore"><a href="/2018/11/08/Java基础7：代码块与加载顺序/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础6：抽象类及接口/">Java基础6：抽象类及接口</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1. 示例代码"></a>1. 示例代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">M</span> <span class="keyword">extends</span> <span class="title">N</span>,<span class="title">L</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">N</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">L</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> 接口 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">1</span>;<span class="comment">//变量默认都为public final修饰</span></span><br><span class="line">    <span class="keyword">final</span> A a = <span class="keyword">null</span>;<span class="comment">//基本数据类型和引用都一样</span></span><br><span class="line">    <span class="comment">//protected void a();//报错</span></span><br><span class="line">    <span class="comment">//private //报错</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>;<span class="comment">// 方法都是public abstract修饰的。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//void b()&#123;&#125; 报错，接口里的方法不能有方法体，也不能有&#123;&#125;，只能有()；</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// final void b();</span></span><br><span class="line">    <span class="comment">// 注意，抽象方法不能加final。因为final方法不能被重写。</span></span><br><span class="line">    <span class="comment">//但如果抽象方法不被重写那就没有意义了，因为他根本没有代码体。</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 抽象类 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">1</span>;<span class="comment">//变量并没有被pulic和final修饰，只是一般的成员变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> A a = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">A</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//抽象类可以有具体方法</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">AA</span><span class="params">()</span></span>;<span class="comment">//抽象方法没有方法体</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//private abstract void B();//报错，组合非法</span></span><br><span class="line">    <span class="comment">// 因为private修饰的方法无法被子类重写，所以和final一样，使抽象方法无法被实现。</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象类也可以被实例化，举例说明</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    B() &#123;</span><br><span class="line">        System.out.println(<span class="string">"b init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    C()&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        System.out.println(<span class="string">"c init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 接口对比抽象类 </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        <span class="comment">//结果先实例化B，再实例化C。</span></span><br><span class="line">        <span class="comment">//因为会调用到父类的构造方法。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><p class="readmore"><a href="/2018/11/08/Java基础6：抽象类及接口/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础5：final关键字/">Java基础5：final关键字</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-用法"><a href="#1-用法" class="headerlink" title="1. 用法"></a>1. 用法</h1><blockquote></blockquote></div><p class="readmore"><a href="/2018/11/08/Java基础5：final关键字/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java基础4：装箱，拆箱，类型转换/">Java基础4：装箱，拆箱，类型转换</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java基础/" class="category">Java基础</a></span></p></div><div class="post-content"><h1 id="1-装箱和拆箱"><a href="#1-装箱和拆箱" class="headerlink" title="1. 装箱和拆箱"></a>1. 装箱和拆箱</h1><p>自动装箱是Java编译器在基本数据类型和对应的对象包装类型之间做的一个转换。</p></div><p class="readmore"><a href="/2018/11/08/Java基础4：装箱，拆箱，类型转换/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java并发之CLH同步队列/">Java并发之CLH同步队列</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java并发/" class="category">Java并发</a></span></p></div><p class="readmore"><a href="/2018/11/08/Java并发之CLH同步队列/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java并发之AQS/">Java并发之AQS</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java并发/" class="category">Java并发</a></span></p></div><div class="post-content"><blockquote></blockquote></div><p class="readmore"><a href="/2018/11/08/Java并发之AQS/">阅读更多</a></p></div><div class="post"><h2 class="post-title"><a href="/2018/11/08/Java并发之Java内存模型/">Java并发之Java内存模型</a></h2><div class="post-meta"><p><span class="date">2018-11-08</span><span><a href="/categories/Java并发/" class="category">Java并发</a></span></p></div><p class="readmore"><a href="/2018/11/08/Java并发之Java内存模型/">阅读更多</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">下一页</a></nav></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div class="widget"><div class="widget-title"> <i class="fa fa-xie">最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/11/21/如果HashSet的key为可变对象/">如果HashSet的key为可变对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之ThreadLocal/">Java并发之ThreadLocal</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之线程池/">Java并发之线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之ConcurrentHashMap/">Java并发之ConcurrentHashMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之Semaphore/">Java并发之Semaphore</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之CyclicBarrier/">Java并发之CyclicBarrier</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之CountDownLatch/">Java并发之CountDownLatch</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之深入分析CAS/">Java并发之深入分析CAS</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之Condition/">Java并发之Condition</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/11/20/Java并发之ReentrantLock/">Java并发之ReentrantLock</a></li></ul></div><div class="widget"><div class="widget-title"> <i class="fa fa-gui">分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java基础/">Java基础</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java并发/">Java并发</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java集合/">Java集合</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringBoot/">SpringBoot</a><span class="category-list-count">7</span></li></ul></div><div class="widget"><div class="widget-title"> <i class="fa fa-biao">标签</i></div><div class="tagcloud"><a href="/tags/Docker/" style="font-size:15px">Docker</a> <a href="/tags/Java/" style="font-size:15px">Java</a> <a href="/tags/SpringBoot/" style="font-size:15px">SpringBoot</a> <a href="/tags/Slf4j/" style="font-size:15px">Slf4j</a> <a href="/tags/Log4j/" style="font-size:15px">Log4j</a> <a href="/tags/Log4j2/" style="font-size:15px">Log4j2</a> <a href="/tags/demo/" style="font-size:15px">demo</a> <a href="/tags/JDBC/" style="font-size:15px">JDBC</a> <a href="/tags/Jpa/" style="font-size:15px">Jpa</a> <a href="/tags/JdbcTemplate/" style="font-size:15px">JdbcTemplate</a> <a href="/tags/Yaml/" style="font-size:15px">Yaml</a> <a href="/tags/Web/" style="font-size:15px">Web</a></div></div><div class="widget"><div class="widget-title"> <i class="fa fa-archive">归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li></ul></div><div class="widget"><div class="widget-title"> <i class="fa fa-you">友情链接</i></div><ul></ul><a href="https://img-blog.csdnimg.cn/2018110615553738.png" title="test1" target="_blank">test1</a><ul></ul><a href="https://img-blog.csdnimg.cn/2018110615553738.png" title="test2" target="_blank">test2</a><ul></ul><a href="https://img-blog.csdnimg.cn/2018110615553738.png" title="test3" target="_blank">test3</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p> <span>Copyright &copy;<a href="/." rel="nofollow">Joe.</a></span> <span>Count by <a href="http://busuanzi.ibruce.info/">busuanzi.</a></span> <span>Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo.</a></span></p></div></div></div><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/totop.js?v=2.0.1" async></script></body></html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Write Once,Run Anywhere">
+<meta name="keywords" content="Java,并发,JVM,Spring,Spring Boot,源码,架构">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Joe&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Joe&#39;s Blog">
+<meta property="og:description" content="Write Once,Run Anywhere">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Joe&#39;s Blog">
+<meta name="twitter:description" content="Write Once,Run Anywhere">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/4/">
+
+
+
+
+
+  <title>Joe's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Joe's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Learning Java</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础10：理解Java异常/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础10：理解Java异常/" itemprop="url">Java基础10：理解Java异常</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:49:17+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-为什么要使用异常"><a href="#1-为什么要使用异常" class="headerlink" title="1. 为什么要使用异常"></a>1. 为什么要使用异常</h1><p>为了提高程序的健壮性，提高系统可用率。</p>
+<p>首先我们可以明确一点就是异常的处理机制可以确保我们程序的健壮性，提高系统可用率。虽然我们不是特别喜欢看到它，但是我们不能不承认它的地位，作用。</p>
+<p>如果没有异常机制，程序只能通过运行结果推断是否发生异常或者错误。但这样会降低程序的可读性，并且通过结果推断不一定正确，且很难定位异常发生的位置，降低了代码的可用性。</p>
+<p>Java中的异常处理机制保证了代码的健壮性。使用异常可以很方便地捕获到程序运行过程中发生的错误，并且可以集中处理异常，使代码可读性较强。</p>
+<h1 id="2-异常体系"><a href="#2-异常体系" class="headerlink" title="2. 异常体系"></a>2. 异常体系</h1><p><img src="http://img.my.csdn.net/uploads/201212/02/1354439580_6933.PNG" alt="异常结构"></p>
+<p>可以看出，Throwable是Java中所有错误和异常的超类（万物皆可抛）。它有两个子类，Error，Exception</p>
+<blockquote>
+<p><strong>非检查异常</strong>（unckecked exception）：Error 和 RuntimeException 以及他们的子类。javac在编译时，不会提示和发现这样的异常，不要求在程序处理这些异常。所以如果愿意，我们可以编写代码处理（使用try…catch…finally）这样的异常，也可以不处理。</p>
+<p>对于这些异常，我们应该修正代码，而不是去通过异常处理器处理 。这样的异常发生的原因多半是代码写的有问题。如除0错误ArithmeticException，错误的强制类型转换错误ClassCastException，数组索引越界ArrayIndexOutOfBoundsException，使用了空对象NullPointerException等等。</p>
+</blockquote>
+<blockquote>
+<p><strong>检查异常</strong>（checked exception）：除了Error 和 RuntimeException的其它异常。java强制要求程序员为这样的异常做预备处理工作（使用try…catch…finally或者throws）。在方法中要么用try-catch语句捕获它并处理，要么用throws子句声明抛出它，否则编译不会通过。</p>
+</blockquote>
+<h1 id="3-异常处理"><a href="#3-异常处理" class="headerlink" title="3. 异常处理"></a>3. 异常处理</h1><p>在异常可能发生的地方，用try-catch-finally(可选)捕获或者throws抛出交给函数调用者处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testException</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123; </span><br><span class="line">    <span class="comment">//FileInputStream的构造函数会抛出FileNotFoundException </span></span><br><span class="line">    FileInputStream fileIn = <span class="keyword">new</span> FileInputStream(<span class="string">"E:\\a.txt"</span>);</span><br><span class="line">    <span class="keyword">int</span> word;</span><br><span class="line">    <span class="comment">// read方法会抛出IOException </span></span><br><span class="line">    <span class="keyword">while</span> ((word = fileIn.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">        System.out.print((<span class="keyword">char</span>) word);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// close方法会抛出IOException </span></span><br><span class="line">    fileIn.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 异常处理方式 </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//try块中放可能发生异常的代码。 </span></span><br><span class="line">            InputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"a.txt"</span>);</span><br><span class="line">            <span class="comment">//如果执行完try且不发生异常，则接着去执行finally块和finally后面的代码（如果有的话）。 </span></span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">1</span> / <span class="number">0</span>;</span><br><span class="line">            <span class="comment">//如果发生异常，则尝试去匹配catch块。 throw new SQLException(); </span></span><br><span class="line">            <span class="comment">// 使用1.8jdk同时捕获多个异常，runtimeException也可以捕获。只是捕获后虚拟机也无法处理，所以不建议捕获。 </span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException | IOException | ArrayIndexOutOfBoundsException exception) &#123;</span><br><span class="line">            System.out.println(exception.getMessage());</span><br><span class="line">            <span class="comment">//每一个catch块用于捕获并处理一个特定的异常，或者这异常类型的子类。Java7中可以将多个异常声明在一个catch中。 </span></span><br><span class="line">            <span class="comment">// catch后面的括号定义了异常类型和异常参数。如果异常与之匹配且是最先匹配到的，则虚拟机将使用这个catch块来处理异常。 </span></span><br><span class="line">            <span class="comment">// 在catch块中可以使用这个块的异常参数来获取异常的相关信息。异常参数是这个catch块中的局部变量，其它块不能访问。 </span></span><br><span class="line">            <span class="comment">// 如果当前try块中发生的异常在后续的所有catch中都没捕获到，则先去执行finally，然后到这个函数的外部caller中去匹配异常处理器。 </span></span><br><span class="line">            <span class="comment">// 如果try中没有发生异常，则所有的catch块将被忽略。 </span></span><br><span class="line">            <span class="comment">//多个catch存在子类Exception在父类Exception之前</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="comment">//finally块通常是可选的。 </span></span><br><span class="line">            <span class="comment">// 无论异常是否发生，异常是否匹配被处理，finally都会执行。 </span></span><br><span class="line">            <span class="comment">// finally主要做一些清理工作，如流的关闭，数据库连接的关闭等。 </span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个try至少由一个catch块或者finally或者都有。</p>
+</blockquote>
+<h1 id="4-throws"><a href="#4-throws" class="headerlink" title="4. throws"></a>4. throws</h1><p>throws是另一种处理异常的方式，它不同于try…catch…finally，throws仅仅是将函数中可能出现的异常向调用者声明，而自己则不具体处理。</p>
+<p>采取这种异常处理的原因可能是：方法本身不知道如何处理这样的异常，或者说让调用者处理更好，调用者需要为可能发生的异常负责。</p>
+<h1 id="5-finally"><a href="#5-finally" class="headerlink" title="5. finally"></a>5. finally</h1><p>finally块不管异常是否发生，只要对应的try执行了，则它一定也执行。只有一种方法让finally块不执行：<strong>System.exit()</strong>。因此finally块通常用来做资源释放操作：关闭文件，关闭数据库连接等等。</p>
+<p>良好的编程习惯是：在try块中打开资源，在finally块中清理释放这些资源。</p>
+<blockquote>
+<p>需要注意的地方:</p>
+<p>1、finally块没有处理异常的能力。处理异常的只能是catch块。</p>
+<p>2、在同一try…catch…finally块中 ，如果try中抛出异常，且有匹配的catch块，则先执行catch块，再执行finally块。如果没有catch块匹配，则先执行finally，然后去外面的调用者中寻找合适的catch块。</p>
+<p>3、在同一try…catch…finally块中 ，try发生异常，且匹配的catch块中处理异常时也抛出异常，那么后面的finally也会执行：首先执行finally块，然后去外围调用者中寻找合适的catch块。</p>
+</blockquote>
+<h1 id="6-throw"><a href="#6-throw" class="headerlink" title="6. throw"></a>6. throw</h1><p>自行抛出异常</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保证输入i为正数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArgumentIllegalException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="7-自定义异常"><a href="#7-自定义异常" class="headerlink" title="7. 自定义异常"></a>7. 自定义异常</h1><p>如果要自定义异常类，则扩展Exception类即可，因此这样的自定义异常都属于检查异常（checked exception）。如果要自定义非检查异常，则扩展自RuntimeException。</p>
+<p>其中包括</p>
+<p>一个无参构造函数<br>一个带有String参数的构造函数，并传递给父类的构造函数。<br>一个带有String参数和Throwable参数，并都传递给父类构造函数<br>一个带有Throwable 参数的构造函数，并传递给父类的构造函1数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IOException</span> <span class="keyword">extends</span> <span class="title">Exception</span> </span>&#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IOException</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IOException</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(message);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IOException</span><span class="params">(String message, Throwable cause)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(message, cause);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">IOException</span><span class="params">(Throwable cause)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(cause);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="8-遇到return"><a href="#8-遇到return" class="headerlink" title="8. 遇到return"></a>8. 遇到return</h1><p>在 try块中即便有return，break，continue等改变执行流的语句，finally也会执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> re = bar();</span><br><span class="line">        System.out.println(re);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"finally"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>finally 中return会覆盖try或catch中return</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> re = bar();</span><br><span class="line">        System.out.println(re);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> i = <span class="number">1</span> / <span class="number">0</span>;<span class="comment">//不管有没有异常输出都为3</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>综上，为了代码可读性和可维护性，尽量不要在try-catch-finally语句中使用finally</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础9：深入理解内部类/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础9：深入理解内部类/" itemprop="url">Java基础9：深入理解内部类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:48:43+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h1><blockquote>
+<p>内部类是指在一个外部类的内部再定义一个类。内部类作为外部类的一个成员，并且依附于外部类而存在的。内部类可为静态，可用protected和private修饰（而外部类只能使用public和缺省的包访问权限）。内部类主要有以下几类：<strong>成员内部类、局部内部类、静态内部类、匿名内部类</strong></p>
+</blockquote>
+<h1 id="1-1-共性"><a href="#1-1-共性" class="headerlink" title="1.1 共性"></a>1.1 共性</h1><p>(1)内部类仍然是一个独立的类，在编译之后内部类会被编译成独立的.class文件，但是前面冠以外部类的类名和$符号 。</p>
+<p>(2)内部类不能用普通的方式访问。</p>
+<p>(3)内部类声明成静态的，就不能随便的访问外部类的成员变量了，此时内部类只能访问外部类的静态成员变量 。</p>
+<p>(4)外部类不能直接访问内部类的的成员，但可以通过内部类对象来访问</p>
+<p>内部类是外部类的一个成员，因此内部类可以自由地访问外部类的成员变量，<strong>无论是否是private的</strong>。</p>
+<p>因为当某个外围类的对象创建内部类的对象时，此内部类会捕获一个隐式引用，它引用了实例化该内部对象的外围类对象。通过这个指针，可以访问外围类对象的全部状态。</p>
+<h2 id="1-2-好处"><a href="#1-2-好处" class="headerlink" title="1.2 好处"></a>1.2 好处</h2><p><strong>静态内部类的作用：</strong></p>
+<p>1 只是为了降低包的深度，方便类的使用，静态内部类适用于包含类当中，但又不依赖与外在的类。</p>
+<p>2 由于Java规定静态内部类不能用使用外在类的非静态属性和方法，所以只是为了方便管理类结构而定义。于是我们在创建静态内部类的时候，不需要外部类对象的引用。</p>
+<p><strong>非静态内部类的作用：</strong></p>
+<p>1 内部类继承自某个类或实现某个接口，内部类的代码操作创建其他外围类的对象。所以你可以认为内部类提供了某种进入其外围类的窗口。</p>
+<p>2 使用内部类最吸引人的原因是:每个内部类都能独立地继承自一个(接口的)实现，所以无论外围类是否已经继承了某个(接口的)实现，对于内部类都没有影响</p>
+<p>3 如果没有内部类提供的可以继承多个具体的或抽象的类的能力，一些设计与编程问题就很难解决。</p>
+<p>从这个角度看，内部类使得多重继承的解决方案变得完整。接口解决了部分问题，而内部类有效地实现了”多重继承”。</p>
+<h1 id="2-区别"><a href="#2-区别" class="headerlink" title="2. 区别"></a>2. 区别</h1><h2 id="2-1-那静态内部类与普通内部类有什么区别呢？"><a href="#2-1-那静态内部类与普通内部类有什么区别呢？" class="headerlink" title="2. 1 那静态内部类与普通内部类有什么区别呢？"></a>2. 1 那静态内部类与普通内部类有什么区别呢？</h2><blockquote>
+<p>（1）静态内部类不持有外部类的引用<br>在普通内部类中，我们可以直接访问外部类的属性、方法，即使是private类型也可以访问，这是因为内部类持有一个外部类的引用，可以自由访问。而静态内部类，则只可以访问外部类的静态方法和静态属性（如果是private权限也能访问，这是由其代码位置所决定的），其他则不能访问。</p>
+<p>（2）静态内部类不依赖外部类<br>普通内部类与外部类之间是相互依赖的关系，内部类实例不能脱离外部类实例，也就是说它们会同生同死，一起声明，一起被垃圾回收器回收。而静态内部类是可以独立存在的，即使外部类消亡了，静态内部类还是可以存在的。</p>
+<p>（3）普通内部类不能声明static的方法和变量</p>
+<p>普通内部类不能声明static的方法和变量，注意这里说的是变量，常量（也就是final static修饰的属性）还是可以的，而静态内部类形似外部类，没有任何限制。</p>
+</blockquote>
+<h1 id="3-内部类的加载"><a href="#3-内部类的加载" class="headerlink" title="3. 内部类的加载"></a>3. 内部类的加载</h1><blockquote>
+<p>内部类是延时加载的，也就是说只会在第一次使用时加载。不使用就不加载，所以可以很好的实现单例模式。</p>
+<p>不论是静态内部类还是非静态内部类都是在第一次使用时才会被加载。</p>
+<p>对于非静态内部类是不能出现静态模块（包含静态块，静态属性，静态方法等）</p>
+<p>非静态类的使用需要依赖于外部类的对象</p>
+</blockquote>
+<h1 id="4-成员内部类"><a href="#4-成员内部类" class="headerlink" title="4. 成员内部类"></a>4. 成员内部类</h1><p>类比成员变量，可以被访问修饰符修饰。可以访问外部类的所有变量，包括private。需要依托外部类才能创建。</p>
+<h1 id="5-方法内部类"><a href="#5-方法内部类" class="headerlink" title="5. 方法内部类"></a>5. 方法内部类</h1><p>在方法中定义的内部类称为局部内部类。与局部变量类似，局部内部类不能有访问说明符，因为它不是外围类的一部分，但是它可以访问当前代码块内的常量，和此外围类所有的成员。</p>
+<p>局部内部类只能在定义该内部类的方法内实例化，不可以在此方法外对其实例化。</p>
+<h1 id="6-匿名内部类"><a href="#6-匿名内部类" class="headerlink" title="6. 匿名内部类"></a>6. 匿名内部类</h1><p>简单地说：匿名内部类就是没有名字的内部类，并且，匿名内部类是局部内部类的一种特殊形式。</p>
+<ul>
+<li><p><strong>匿名内部类不能有构造方法</strong>。</p>
+</li>
+<li><p><strong>匿名内部类不能定义任何静态成员、方法和类。</strong></p>
+</li>
+<li><p><strong>匿名内部类不能是public,protected,private,static。只能创建匿名内部类的一个实例。</strong></p>
+</li>
+<li><p><strong>一个匿名内部类一定是在new的后面，用其隐含实现一个接口或实现一个类。</strong></p>
+</li>
+<li><p><strong>因匿名内部类为局部内部类，所以局部内部类的所有限制都对其生效。</strong></p>
+</li>
+</ul>
+<p>内部类引用外部方法的参数时，参数必须为final</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础8：Java类及包访问权限/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础8：Java类及包访问权限/" itemprop="url">Java基础8：Java类及包访问权限</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:48:04+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-问题：一个”-java”源文件中是否可以包括多个类（不是内部类）？有什么限制？"><a href="#1-问题：一个”-java”源文件中是否可以包括多个类（不是内部类）？有什么限制？" class="headerlink" title="1. 问题：一个”.java”源文件中是否可以包括多个类（不是内部类）？有什么限制？"></a>1. 问题：一个”.java”源文件中是否可以包括多个类（不是内部类）？有什么限制？</h1><p>可以有多个类，但只能有一个public的类，并且public的类名必须与文件名相一致。一个文件中可以只有非public类，如果只有一个非public类，此类可以跟文件名不同。</p>
+<h1 id="2-为什么一个java源文件中只能有一个public类？"><a href="#2-为什么一个java源文件中只能有一个public类？" class="headerlink" title="2. 为什么一个java源文件中只能有一个public类？"></a>2. 为什么一个java源文件中只能有一个public类？</h1><p>1.每个编译单元（文件）都只能有一个public类，这表示，每个编译单元都有单一的公共接口，用public类来表现。该接口可以按要求包含众多的支持包访问权限的类。如果在某个编译单元内有一个以上的public类，编译器就会给出错误信息。</p>
+<p>2.public类的名称必须完全与含有该编译单元的文件名相同，包含大小写。如果不匹配，同样将得到编译错误。</p>
+<p>3.虽然不是很常用，但编译单元内完全不带public类也是可能的。在这种情况下，可以随意对文件命名。</p>
+<h1 id="3-在java文件中是否可以没有public类"><a href="#3-在java文件中是否可以没有public类" class="headerlink" title="3 . 在java文件中是否可以没有public类"></a>3 . 在java文件中是否可以没有public类</h1><p>public类不是必须的，java文件中可以没有public类。</p>
+<h1 id="4-为什么这个public的类的类名必须和文件名相同"><a href="#4-为什么这个public的类的类名必须和文件名相同" class="headerlink" title="4. 为什么这个public的类的类名必须和文件名相同"></a>4. 为什么这个public的类的类名必须和文件名相同</h1><p>是为了方便虚拟机在相应的路径中找到相应的类所对应的字节码文件。</p>
+<h1 id="5-main函数"><a href="#5-main函数" class="headerlink" title="5. main函数"></a>5. main函数</h1><p>作为函数的入口</p>
+<p>public：代表着该函数访问权限是最大的</p>
+<p>static：代表主函数随着类的加载就已经存在了</p>
+<p>void：主函数没有具体的返回值</p>
+<p>main：不是关键字，但是一个特殊的单词，能够被JVM识别（String[] args）：函数的参数，参数类型是一个数组，该数组中的元素师字符串，字符串数组。main(String[] args) 字符串数组的 此时空数组的长度是0，但也可以在 运行的时候向其中传入参数。</p>
+<h1 id="6-外部类的访问权限"><a href="#6-外部类的访问权限" class="headerlink" title="6. 外部类的访问权限"></a>6. 外部类的访问权限</h1><p>外部类只能用public和default修饰。</p>
+<p>为什么要对外部类或类做修饰呢？</p>
+<p>1.存在包概念：public 和 default 能区分这个外部类能对不同包作一个划分 （default修饰的类，其他包中引入不了这个类，public修饰的类才能被import）</p>
+<p>protected是包内可见并且子类可见，但是当一个外部类想要继承一个protected修饰的非同包类时，压根找不到这个类，更别提几层了</p>
+<p>private修饰的外部类，其他任何外部类都无法导入它。</p>
+<p>​     </p>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Class</th>
+<th>Package</th>
+<th>Subclass</th>
+<th>World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>public</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>no modifier</td>
+<td>Y</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>private</code></td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+<h1 id="7-Java包的命名规则"><a href="#7-Java包的命名规则" class="headerlink" title="7. Java包的命名规则"></a>7. Java包的命名规则</h1><blockquote>
+<p>以 java.* 开头的是Java的核心包，所有程序都会使用这些包中的类；</p>
+<p>以 javax.<em> 开头的是扩展包，x 是 extension 的意思，也就是扩展。虽然 javax.</em> 是对 java.<em> 的优化和扩展，但是由于 javax.</em> 使用的越来越多，很多程序都依赖于 javax.，所以 javax. 也是核心的一部分了，也随JDK一起发布。</p>
+<p>以 org.* 开头的是各个机构或组织发布的包，因为这些组织很有影响力，它们的代码质量很高，所以也将它们开发的部分常用的类随JDK一起发布。</p>
+<p>在包的命名方面，为了防止重名，有一个惯例：大家都以自己域名的倒写形式作为开头来为自己开发的包命名，例如百度发布的包会以 com.baidu.<em> 开头，w3c组织发布的包会以 org.w3c.</em> 开头，微学苑发布的包会以 net.weixueyuan.* 开头……</p>
+<p>组织机构的域名后缀一般为 org，公司的域名后缀一般为 com，可以认为 org.<em> 开头的包为非盈利组织机构发布的包，它们一般是开源的，可以免费使用在自己的产品中，不用考虑侵权问题，而以 com.</em> 开头的包往往由盈利性的公司发布，可能会有版权问题，使用时要注意。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础7：代码块与加载顺序/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础7：代码块与加载顺序/" itemprop="url">Java基础7：代码块与加载顺序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:46:56+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>代码块：用{}包围的代码</p>
+<p>Java中，有</p>
+<ul>
+<li>局部代码块</li>
+<li>静态代码块</li>
+<li>静态代码块</li>
+</ul>
+<h1 id="1-局部代码块"><a href="#1-局部代码块" class="headerlink" title="1. 局部代码块"></a>1. 局部代码块</h1><p>位置：局部位置（方法内部）</p>
+<p>作用：限定变量的生命周期，尽早释放，节约内存</p>
+<p>调用：调用其所在的方法时执行</p>
+<h1 id="2-构造代码块"><a href="#2-构造代码块" class="headerlink" title="2. 构造代码块"></a>2. 构造代码块</h1><p>位置：类成员的位置，就是类中方法之外的位置</p>
+<p>作用：把多个构造方法共同的部分提取出来，共用构造代码块</p>
+<p>调用：每次调用构造方法时，都会优先于构造方法执行，也就是每次new一个对象时自动调用，对  对象的初始化</p>
+<h1 id="3-静态代码块"><a href="#3-静态代码块" class="headerlink" title="3. 静态代码块"></a>3. 静态代码块</h1><p>位置：类成员位置，用static修饰的代码块</p>
+<p>作用：对类进行一些初始化  只加载一次，当new多个对象时，只有第一次会调用静态代码块，因为，静态代码块                  是属于类的，所有对象共享一份</p>
+<p>调用: new 一个对象时自动调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Joe</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Food</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"父类静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"父类普通代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Food</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"父类构造函数"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">extends</span> <span class="title">Food</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">"子类静态代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">"子类普通代码块"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Apple</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"子类构造函数"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Apple a = <span class="keyword">new</span> Apple();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">父类静态代码块</span><br><span class="line">子类静态代码块</span><br><span class="line">父类普通代码块</span><br><span class="line">父类构造函数</span><br><span class="line">子类普通代码块</span><br><span class="line">子类构造函数</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础6：抽象类及接口/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础6：抽象类及接口/" itemprop="url">Java基础6：抽象类及接口</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:45:52+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-示例代码"><a href="#1-示例代码" class="headerlink" title="1. 示例代码"></a>1. 示例代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">M</span> <span class="keyword">extends</span> <span class="title">N</span>,<span class="title">L</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">N</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">L</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> 接口 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">1</span>;<span class="comment">//变量默认都为public final修饰</span></span><br><span class="line">    <span class="keyword">final</span> A a = <span class="keyword">null</span>;<span class="comment">//基本数据类型和引用都一样</span></span><br><span class="line">    <span class="comment">//protected void a();//报错</span></span><br><span class="line">    <span class="comment">//private //报错</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>;<span class="comment">// 方法都是public abstract修饰的。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//void b()&#123;&#125; 报错，接口里的方法不能有方法体，也不能有&#123;&#125;，只能有()；</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// final void b();</span></span><br><span class="line">    <span class="comment">// 注意，抽象方法不能加final。因为final方法不能被重写。</span></span><br><span class="line">    <span class="comment">//但如果抽象方法不被重写那就没有意义了，因为他根本没有代码体。</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> 抽象类 </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">1</span>;<span class="comment">//变量并没有被pulic和final修饰，只是一般的成员变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> A a = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">A</span><span class="params">()</span></span>&#123;&#125;<span class="comment">//抽象类可以有具体方法</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">AA</span><span class="params">()</span></span>;<span class="comment">//抽象方法没有方法体</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//private abstract void B();//报错，组合非法</span></span><br><span class="line">    <span class="comment">// 因为private修饰的方法无法被子类重写，所以和final一样，使抽象方法无法被实现。</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//抽象类也可以被实例化，举例说明</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    B() &#123;</span><br><span class="line">        System.out.println(<span class="string">"b init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    C()&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        System.out.println(<span class="string">"c init"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 接口对比抽象类 </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        <span class="comment">//结果先实例化B，再实例化C。</span></span><br><span class="line">        <span class="comment">//因为会调用到父类的构造方法。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-接口"><a href="#2-接口" class="headerlink" title="2.接口"></a>2.接口</h1><p>高度抽象</p>
+<p>接口可以多继承</p>
+<p>接口中变量默认为public static final修饰，且必须被赋值（不能只定义）</p>
+<p>接口中方法默认为public abstract(JDK1.8中可以有default方法)</p>
+<p>不能有构造器</p>
+<h1 id="3-抽象类"><a href="#3-抽象类" class="headerlink" title="3. 抽象类"></a>3. 抽象类</h1><p>包含抽象方法的类称为抽象类，但并不意味着抽象类中只能有抽象方法，它和普通类一样，同样可以拥有<strong>成员变量</strong>和<strong>普通的成员方法</strong>。</p>
+<ul>
+<li><p>抽象类可以有非抽象方法。(不需要必须有抽象方法)</p>
+</li>
+<li><p>abstract可以修饰类，方法，不能修饰字段。</p>
+</li>
+<li><p>抽象方法的body不能有{}，而是;</p>
+</li>
+<li><p>可以有构造器</p>
+</li>
+<li><p>可以有静态方法</p>
+</li>
+<li><strong>不可以用来创建对象，但可以被实例化（继承关系）</strong></li>
+<li>抽象方法可以有public、protected和default这些修饰符</li>
+<li><strong>如果一个类继承于一个抽象类，则子类必须实现父类的抽象方法。如果子类没有实现父类的抽象方法，则必须将子类也定义为为abstract类。</strong></li>
+<li><strong>抽象方法必须为public或者protected（因为如果为private，则不能被子类继承，子类便无法实现该方法），缺省情况下默认为public。</strong></li>
+</ul>
+<h1 id="4-区别"><a href="#4-区别" class="headerlink" title="4. 区别"></a>4. 区别</h1><p>接口可以多继承，抽象类不能</p>
+<p>接口没有构造方法，抽象类可以有</p>
+<p>接口不能有普通成员变量，抽象类可以有</p>
+<p>接口类不可以有普通方法（Java8中可以有默认实现），抽象类可以有</p>
+<p>抽象类中抽象方法类型可以是public,protected,接口中只能为public</p>
+<p>接口中不能有静态方法，抽象类中可以有</p>
+<p>抽象类和接口都可以有静态成员变量，但接口只能是public static final，抽象类任意。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础5：final关键字/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础5：final关键字/" itemprop="url">Java基础5：final关键字</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:45:26+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-用法"><a href="#1-用法" class="headerlink" title="1. 用法"></a>1. 用法</h1><blockquote>
+<p>final修饰类，表示这个类不能被继承</p>
+<p>final修饰方法，表示这个方法不能被重写。</p>
+<p>final修饰变量，如果这个变量指向一个基本类型，则这个变量为一个常量，如果这个变量指向一个对象的引用，则这个变量指向的引用不可变。</p>
+</blockquote>
+<h1 id="2-修饰类"><a href="#2-修饰类" class="headerlink" title="2. 修饰类"></a>2. 修饰类</h1><blockquote>
+<p>一个典型的例子是Java,lang.String类。</p>
+</blockquote>
+<blockquote>
+<p>在这个类中，String被final所修饰，表示这个类不能被继承。此外，在String内部定义了一个char数组，也被final所修饰，且类中没有修改value数组内容的代码。综上，我们可以说String数组虽然没有被synchronized所修饰，但它是线程安全的。</p>
+</blockquote>
+<h1 id="3-修饰方法"><a href="#3-修饰方法" class="headerlink" title="3. 修饰方法"></a>3. 修饰方法</h1><blockquote>
+<p>当final修饰方法时，表示这个方法不能被重写。重写基于动态绑定，而final方法在编译阶段绑定，称为静态绑定(static binding)。</p>
+</blockquote>
+<h1 id="4-修饰变量"><a href="#4-修饰变量" class="headerlink" title="4. 修饰变量"></a>4. 修饰变量</h1><blockquote>
+<p>当final修饰成员变量时，必须在声明时初始化或在构造函数中初始化。</p>
+<p>当final修饰局部变量时，必须在声明时赋值。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java基础4：装箱，拆箱，类型转换/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java基础4：装箱，拆箱，类型转换/" itemprop="url">Java基础4：装箱，拆箱，类型转换</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:41:47+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java基础/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-装箱和拆箱"><a href="#1-装箱和拆箱" class="headerlink" title="1. 装箱和拆箱"></a>1. 装箱和拆箱</h1><p>自动装箱是Java编译器在基本数据类型和对应的对象包装类型之间做的一个转换。</p>
+<p>基本类型：</p>
+<ul>
+<li>byte</li>
+<li>short</li>
+<li>int</li>
+<li>long</li>
+<li>char</li>
+<li>float</li>
+<li>double</li>
+<li>boolean</li>
+</ul>
+<p>包装类型</p>
+<ul>
+<li>Byte</li>
+<li>Short</li>
+<li>Integer</li>
+<li>Long</li>
+<li>Character</li>
+<li>Float</li>
+<li>Double</li>
+<li>Boolean</li>
+</ul>
+<p><strong>简单来说，装箱就是基本类型转换为对象类型，拆箱就是对象类型转换为基本类型。</strong></p>
+<p>通常情况下如果我们要创建一个对象，需要new关键字。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<p>自动装箱就是Java会自动完成基本类型到包装类型的转换。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer i = <span class="number">10</span>;<span class="comment">//装箱</span></span><br><span class="line"><span class="keyword">int</span> j = i;<span class="comment">//拆箱</span></span><br></pre></td></tr></table></figure>
+<h1 id="2-如何实现"><a href="#2-如何实现" class="headerlink" title="2. 如何实现"></a>2. 如何实现</h1><p>以Integer为例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            Integer i = <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">int</span> n = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>反编译class文件：</p>
+<p><img src="https://images0.cnblogs.com/i/288799/201406/101641567956500.jpg" alt="字节码文件"></p>
+<blockquote>
+<p>可知，在装箱调用的是Integer的valueOf()方法，拆箱调用的是Integer的intValue()方法。</p>
+</blockquote>
+<h1 id="3-判断相等"><a href="#3-判断相等" class="headerlink" title="3. 判断相等"></a>3. 判断相等</h1><p>对于下面代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">100</span>;</span><br><span class="line">Integer i2 = <span class="number">100</span>;</span><br><span class="line">Integer i3 = <span class="number">200</span>;</span><br><span class="line">Integer i4 = <span class="number">200</span>;</span><br><span class="line">System.out.println(i1 == i2);<span class="comment">//true</span></span><br><span class="line">System.out.println(i3 == i4);<span class="comment">//false</span></span><br><span class="line">System.out.println(i1.equals(i2));<span class="comment">//true</span></span><br><span class="line">System.out.println(i3.equals(i4));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>输出不同的原因是因为缓存池的存在。具体在之前有说过。</p>
+<p><a href="https://joeshero.github.io/2018/11/06/Java%E5%9F%BA%E7%A1%802%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" target="_blank" rel="noopener">Java基础2：基本数据类型</a></p>
+<h1 id="4-类型转换"><a href="#4-类型转换" class="headerlink" title="4. 类型转换"></a>4. 类型转换</h1><p>对于下面代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">short</span> s1 += <span class="number">1</span>;<span class="comment">//可以正常编译通过</span></span><br><span class="line"><span class="keyword">short</span> s1 = s1 + <span class="number">1</span>;<span class="comment">//无法正常编译通过</span></span><br></pre></td></tr></table></figure>
+<p>对于第一种情况，Java在运算 +=，-=，*=，/= 等运算符时会自动进行类型的转换。</p>
+<p>对于第二种情况，s1为short类型，s1 + 1为int类型，不能向下转型，所以报错。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java并发之CLH同步队列/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java并发之CLH同步队列/" itemprop="url">Java并发之CLH同步队列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:39:33+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java并发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java并发之AQS/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java并发之AQS/" itemprop="url">Java并发之AQS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:38:58+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java并发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>Java的内置锁一直都是备受争议的，在JDK 1.6之前，synchronized这个重量级锁其性能一直都是较为低下，虽然在1.6后，进行大量的锁优化策略(<a href="https://joeshero.github.io/2018/11/06/Java%E5%B9%B6%E5%8F%91%E4%B9%8Bsynchronized%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Java并发之synchronized原理</a>),但是与Lock相比synchronized还是存在一些缺陷的：虽然synchronized提供了便捷性的隐式获取锁释放锁机制（基于JVM机制），但是它却缺少了获取锁与释放锁的可操作性，可中断、超时获取锁，且它为独占式在高并发场景下性能大打折扣。 </p>
+</blockquote>
+<blockquote>
+<p>在介绍Lock之前，我们需要先熟悉一个非常重要的组件，掌握了该组件JUC包下面很多问题都不在是问题了。该组件就是AQS。 </p>
+</blockquote>
+<blockquote>
+<p>AQS，AbstractQueuedSynchronizer，即队列同步器。它是构建锁或者其他同步组件的基础框架（如ReentrantLock、ReentrantReadWriteLock、Semaphore等），JUC并发包的作者（<strong>Doug Lea</strong>）期望它能够成为实现大部分同步需求的基础。它是JUC并发包中的核心基础组件。 </p>
+</blockquote>
+<blockquote>
+<p>AQS解决了子啊实现同步器时涉及当的大量细节问题，例如获取同步状态、FIFO同步队列。基于AQS来构建同步器可以带来很多好处。它不仅能够极大地减少实现工作，而且也不必处理在多个位置上发生的竞争问题。 </p>
+</blockquote>
+<blockquote>
+<p>在基于AQS构建的同步器中，只能在一个时刻发生阻塞，从而降低上下文切换的开销，提高了吞吐量。同时在设计AQS时充分考虑了可伸缩行，因此J.U.C中所有基于AQS构建的同步器均可以获得这个优势。 </p>
+</blockquote>
+<blockquote>
+<p>AQS的主要使用方式是继承，子类通过继承同步器并实现它的抽象方法来管理同步状态。 </p>
+</blockquote>
+<blockquote>
+<p>AQS使用一个int类型的成员变量state来表示同步状态，当state&gt;0时表示已经获取了锁，当state =  0时表示释放了锁。它提供了三个方法（getState()、setState(int  newState)、compareAndSetState(int expect,int  update)）来对同步状态state进行操作，当然AQS可以确保对state的操作是安全的。 </p>
+</blockquote>
+<blockquote>
+<p>AQS通过内置的FIFO同步队列来完成资源获取线程的排队工作，如果当前线程获取同步状态失败（锁）时，AQS则会将当前线程以及等待状态等信息构造成一个节点（Node）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，则会把节点中的线程唤醒，使其再次尝试获取同步状态。  </p>
+</blockquote>
+<blockquote>
+<p>AQS主要提供了如下一些方法： </p>
+</blockquote>
+<ul>
+<li>getState()：返回同步状态的当前值； </li>
+<li>setState(int newState)：设置当前同步状态； </li>
+<li>compareAndSetState(int expect, int update)：使用CAS设置当前状态，该方法能够保证状态设置的原子性； </li>
+<li>tryAcquire(int arg)：独占式获取同步状态，获取同步状态成功后，其他线程需要等待该线程释放同步状态才能获取同步状态； </li>
+<li>tryRelease(int arg)：独占式释放同步状态； </li>
+<li>tryAcquireShared(int arg)：共享式获取同步状态，返回值大于等于0则表示获取成功，否则获取失败； </li>
+<li>tryReleaseShared(int arg)：共享式释放同步状态； </li>
+<li>isHeldExclusively()：当前同步器是否在独占式模式下被线程占用，一般该方法表示是否被当前线程所独占； </li>
+<li>acquire(int arg)：独占式获取同步状态，如果当前线程获取同步状态成功，则由该方法返回，否则，将会进入同步队列等待，该方法将会调用可重写的tryAcquire(int arg)方法； </li>
+<li>acquireInterruptibly(int arg)：与acquire(int arg)相同，但是该方法响应中断，当前线程为获取到同步状态而进入到同步队列中，如果当前线程被中断，则该方法会抛出InterruptedException异常并返回； </li>
+<li>tryAcquireNanos(int arg,long nanos)：超时获取同步状态，如果当前线程在nanos时间内没有获取到同步状态，那么将会返回false，已经获取则返回true； </li>
+<li>acquireShared(int arg)：共享式获取同步状态，如果当前线程未获取到同步状态，将会进入同步队列等待，与独占式的主要区别是在同一时刻可以有多个线程获取到同步状态； </li>
+<li>acquireSharedInterruptibly(int arg)：共享式获取同步状态，响应中断； </li>
+<li>tryAcquireSharedNanos(int arg, long nanosTimeout)：共享式获取同步状态，增加超时限制； </li>
+<li>release(int arg)：独占式释放同步状态，该方法会在释放同步状态之后，将同步队列中第一个节点包含的线程唤醒； </li>
+<li>releaseShared(int arg)：共享式释放同步状态；</li>
+</ul>
+<blockquote>
+<p><strong>转自 <a href="http://cmsblogs.com/?p=2174" target="_blank" rel="noopener">死磕Java并发之A.Q.S简介</a></strong></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/08/Java并发之Java内存模型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Joe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/iverson.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Joe's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/Java并发之Java内存模型/" itemprop="url">Java并发之Java内存模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T00:38:32+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java并发/" itemprop="url" rel="index">
+                    <span itemprop="name">Java并发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/iverson.jpg" alt="Joe">
+            
+              <p class="site-author-name" itemprop="name">Joe</p>
+              <p class="site-description motion-element" itemprop="description">Write Once,Run Anywhere</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/joeshero" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Joe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
